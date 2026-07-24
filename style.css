@@ -1,71 +1,138 @@
+/* =====================
+   My Memory World
+   Main Theme
+===================== */
+
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
 body {
 
     font-family: Arial, sans-serif;
 
-    background: #fff0f5;
+    background: #fff5f8;
 
     margin: 0;
 
     padding: 20px;
 
+    color: #555;
+
 }
 
 
-h1 {
+/* =====================
+   Hero
+===================== */
+
+
+.hero {
 
     text-align: center;
 
-    color: #d63384;
+    padding: 80px 20px;
 
 }
 
 
-h2 {
+.hero h1 {
 
-    color: #d63384;
+    font-size: 45px;
 
-    margin-top: 40px;
+    color: #ff4d88;
 
 }
 
 
 #couple-name {
 
-    text-align: center;
+    font-size: 38px;
 
-    font-size: 32px;
+    color: #d63384;
 
     font-weight: bold;
-
-    color: #ff69b4;
 
 }
 
 
 #together-since {
 
-    text-align: center;
+    font-size: 20px;
 
     color: #777;
 
-    margin-bottom: 30px;
+}
+
+
+.love-text {
+
+    color: #ff69b4;
+
+    font-size: 22px;
+
+    font-style: italic;
 
 }
+
+
+
+/* =====================
+   Section
+===================== */
+
+
+section {
+
+    max-width: 800px;
+
+    margin: auto;
+
+}
+
+
+h2 {
+
+    text-align: center;
+
+    color: #d63384;
+
+    margin-top: 50px;
+
+}
+
+
+
+/* =====================
+   Cards
+===================== */
 
 
 .card {
 
     background: white;
 
-    border-radius: 20px;
+    padding: 25px;
 
-    padding: 20px;
+    margin: 20px auto;
 
-    margin: 15px auto;
+    border-radius: 25px;
 
-    max-width: 500px;
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.08);
 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+
+}
+
+
+.card:hover {
+
+    transform: translateY(-5px);
 
 }
 
@@ -79,27 +146,249 @@ h2 {
 
 .card p {
 
-    color: #555;
-
-    line-height: 1.6;
+    line-height: 1.7;
 
 }
 
 
-section {
 
-    max-width: 600px;
+/* =====================
+   Memory Timeline
+===================== */
 
-    margin: auto;
+
+.timeline {
+
+    position: relative;
+
+    margin-top: 40px;
 
 }
 
-.memory-image {
 
-    width: 100%;
+.timeline::before {
 
-    border-radius: 15px;
+    content:"";
 
-    margin-bottom: 15px;
+    position:absolute;
+
+    left:20px;
+
+    top:0;
+
+    bottom:0;
+
+    width:3px;
+
+    background:#ffc1d9;
+
+}
+
+
+
+.timeline .card {
+
+    margin-left:60px;
+
+}
+
+
+.timeline .card::before {
+
+    content:"❤️";
+
+    position:absolute;
+
+    left:-55px;
+
+}
+
+
+
+/* =====================
+   Bucket List
+===================== */
+
+
+.dream-container {
+
+    display:grid;
+
+    gap:20px;
+
+}
+
+
+.dream-card {
+
+    background:
+    linear-gradient(
+        135deg,
+        white,
+        #fff0f6
+    );
+
+    border:2px solid #ffd1e3;
+
+}
+
+
+.dream-card:hover {
+
+    transform:scale(1.02);
+
+}
+
+
+
+/* =====================
+   Animation
+===================== */
+
+
+.hero,
+.card {
+
+    animation:
+
+    fadeIn 1s ease;
+
+}
+
+
+
+@keyframes fadeIn {
+
+
+from {
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+}
+
+
+to {
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+}
+
+
+
+/* =====================
+   Footer
+===================== */
+
+
+footer {
+
+    text-align:center;
+
+    margin-top:60px;
+
+    color:#999;
+
+}
+
+
+
+/* =====================
+   Mobile
+===================== */
+
+
+@media(max-width:600px){
+
+
+.hero h1 {
+
+    font-size:32px;
+
+}
+
+
+#couple-name {
+
+    font-size:28px;
+
+}
+
+
+.card {
+
+    padding:20px;
+
+}
+
+
+}
+
+/* =====================
+   Navigation Menu
+===================== */
+
+
+nav {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background: rgba(255,255,255,0.9);
+
+    backdrop-filter: blur(10px);
+
+    padding: 15px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+nav a {
+
+    text-decoration: none;
+
+    color: #d63384;
+
+    font-weight: bold;
+
+    margin: 0 12px;
+
+    transition: 0.3s;
+
+}
+
+
+
+nav a:hover {
+
+    color: #ff4d88;
+
+    transform: scale(1.1);
+
+}
+
+
+
+/* Smooth scrolling */
+
+html {
+
+    scroll-behavior: smooth;
 
 }
