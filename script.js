@@ -60,11 +60,26 @@ fetch(MEMORY_API)
 
         container.innerHTML += `
 
-        <div class="card">
+        <div class="card memory-card">
 
-            <h3>
-            ❤️ ${memory.Title}
-            </h3>
+
+${memory["Photo URL"] ? 
+
+`
+<img 
+src="${memory["Photo URL"]}"
+class="memory-image">
+`
+
+:
+
+""}
+
+
+
+<h3>
+❤️ ${memory.Title}
+</h3>
 
             <p>
             ${memory.Description || ""}
@@ -77,6 +92,10 @@ fetch(MEMORY_API)
             <p>
             📍 ${memory.Location || ""}
             </p>
+
+            <p>
+😊 ${memory.Mood || ""}
+</p>
 
             <p>
             ⭐ ${memory.Rating || ""}
@@ -162,3 +181,55 @@ fetch(BUCKET_API)
     console.error("Bucket Error:", error);
 
 });
+
+// =======================
+// Anniversary Counter
+// =======================
+
+
+const startDate = new Date("2026-04-28");
+
+
+const today = new Date();
+
+
+const difference = today - startDate;
+
+
+const days = Math.floor(
+    difference / (1000 * 60 * 60 * 24)
+);
+
+
+document.getElementById("days-count").innerText = days;
+
+// =======================
+// Our Song
+// =======================
+
+fetch(API_URL + "?sheet=Relationship")
+
+.then(response => response.json())
+
+.then(data => {
+
+    let relationship = {};
+
+    data.forEach(item => {
+
+        relationship[item.Field] = item.Value;
+
+    });
+
+
+    const song = relationship["Our Song"];
+
+
+    if(song){
+
+        document.getElementById("song-link").src = song;
+
+    }
+
+});
+
