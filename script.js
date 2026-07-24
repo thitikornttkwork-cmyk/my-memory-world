@@ -78,7 +78,11 @@ class="memory-image">
 
 
 <h3>
-❤️ ${memory.Title}
+
+${memory.Favorite === "TRUE" ? "⭐ " : "❤️ "}
+
+${memory.Title}
+
 </h3>
 
             <p>

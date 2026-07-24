@@ -583,3 +583,224 @@ html {
 
 }
 
+.favorite {
+
+    border: 3px solid #ff69b4;
+
+    position: relative;
+
+}
+
+
+.favorite::before {
+
+    content:"⭐ Favorite";
+
+    position:absolute;
+
+    top:10px;
+
+    right:15px;
+
+    color:#ff69b4;
+
+    font-weight:bold;
+
+}
+
+/* =====================
+   Mobile Design
+===================== */
+
+
+@media (max-width:600px){
+
+
+body {
+
+    padding:15px;
+
+}
+
+
+.hero h1 {
+
+    font-size:28px;
+
+}
+
+
+#couple-name {
+
+    font-size:24px;
+
+}
+
+
+
+nav a {
+
+    display:inline-block;
+
+    margin:8px;
+
+    font-size:14px;
+
+}
+
+
+
+.card {
+
+    padding:15px;
+
+    margin:15px 0;
+
+}
+
+
+
+.memory-image {
+
+    height:200px;
+
+}
+
+
+
+.counter {
+
+    font-size:20px;
+
+}
+
+
+
+#days-count {
+
+    font-size:32px;
+
+}
+
+
+}
+
+/* =====================
+   Fade Animation
+===================== */
+
+
+section,
+.card,
+.hero {
+
+    animation: fadeIn 1s ease;
+
+}
+
+
+
+@keyframes fadeIn {
+
+
+from {
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+}
+
+
+to {
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+}
+
+/* Floating Heart */
+
+
+.floating-heart {
+
+    position:fixed;
+
+    bottom:30px;
+
+    right:30px;
+
+    font-size:35px;
+
+    animation: heartFloat 3s infinite;
+
+    z-index:999;
+
+}
+
+
+
+@keyframes heartFloat {
+
+
+0% {
+
+transform:translateY(0);
+
+}
+
+
+50% {
+
+transform:translateY(-25px);
+
+}
+
+
+100% {
+
+transform:translateY(0);
+
+}
+
+
+}
+
+/* =====================
+   Premium Footer
+===================== */
+
+
+footer {
+
+    text-align: center;
+
+    margin-top: 50px;
+
+    padding: 30px;
+
+    color: #d63384;
+
+    font-size: 16px;
+
+}
+
+
+footer p:first-child {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+
+footer p:last-child {
+
+    opacity: 0.7;
+
+}
