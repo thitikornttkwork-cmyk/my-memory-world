@@ -480,9 +480,9 @@ html {
 
 .memory-card:hover .memory-image {
 
-    transform: scale(1.05);
+    transform:scale(1.02);
 
-    transition: 0.5s;
+    transition:0.5s;
 
 }
 
@@ -803,3 +803,65 @@ footer p:last-child {
     display:block;
 
 }
+
+/* =====================
+   Fix Memory Image Spacing
+===================== */
+
+.memory-card {
+
+    overflow: visible;
+
+}
+
+
+.memory-image {
+
+    width:100%;
+
+    height:auto;
+
+    max-height:none;
+
+    object-fit:contain;
+
+    border-radius:20px;
+
+    margin-bottom:25px;
+
+    display:block;
+
+}
+
+
+.memory-card h3 {
+
+    margin-top:20px;
+
+}
+
+
+.memory-card p {
+
+    margin-top:10px;
+
+}
+
+.memory-card img {
+
+    position:relative;
+
+    z-index:1;
+
+}
+
+
+.memory-card h3,
+.memory-card p {
+
+    position:relative;
+
+    z-index:2;
+
+}
+
