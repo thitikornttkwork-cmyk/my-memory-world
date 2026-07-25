@@ -471,24 +471,11 @@ html {
 
 .memory-card {
 
-    overflow: hidden;
+    overflow:visible;
 
 }
 
 
-.memory-image {
-
-    width: 100%;
-
-    height: 250px;
-
-    object-fit: cover;
-
-    border-radius: 20px;
-
-    margin-bottom: 15px;
-
-}
 
 
 .memory-card:hover .memory-image {
@@ -660,14 +647,6 @@ nav a {
 
 
 
-.memory-image {
-
-    height:200px;
-
-}
-
-
-
 .counter {
 
     font-size:20px;
@@ -802,5 +781,25 @@ footer p:first-child {
 footer p:last-child {
 
     opacity: 0.7;
+
+}
+
+/* =====================
+   Memory Image Auto Size
+===================== */
+
+.memory-image{
+
+    width:100%;
+
+    height:auto;
+
+    object-fit:contain;
+
+    border-radius:20px;
+
+    margin-bottom:15px;
+
+    display:block;
 
 }
