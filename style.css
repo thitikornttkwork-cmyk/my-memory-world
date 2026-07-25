@@ -477,12 +477,22 @@ html {
 
 
 
+.memory-card {
+
+    overflow: hidden;
+
+}
+
+.memory-image {
+
+    transition: 0.5s ease;
+
+}
+
 
 .memory-card:hover .memory-image {
 
-    transform:scale(1.02);
-
-    transition:0.5s;
+    transform: scale(1.03);
 
 }
 
