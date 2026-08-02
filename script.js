@@ -366,3 +366,33 @@ fetch(API_URL + "?sheet=Relationship")
     console.error("Song Error:", error);
 
 });
+
+// =======================
+// Page Loader
+// =======================
+
+
+window.addEventListener("load", () => {
+
+
+    const loader =
+    document.querySelector(".page-loader");
+
+
+
+    if(loader){
+
+
+        setTimeout(()=>{
+
+
+            loader.classList.add("hide");
+
+
+        },1000);
+
+
+    }
+
+
+});

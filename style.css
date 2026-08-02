@@ -1013,3 +1013,711 @@ section h2 {
 
 
 }
+
+/* =========================
+   LUXURY NAVIGATION
+========================= */
+
+
+nav {
+
+    border-bottom:
+
+    1px solid rgba(212,175,55,.2);
+
+}
+
+
+
+nav a {
+
+    position:relative;
+
+    padding:8px 5px;
+
+    transition:
+
+    color .3s ease;
+
+}
+
+
+
+nav a::after {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    left:0;
+
+
+    bottom:-8px;
+
+
+    width:0;
+
+
+    height:3px;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #d4af37,
+        #f7e7a9
+    );
+
+
+    border-radius:20px;
+
+
+    transition:
+
+    width .35s ease;
+
+
+}
+
+
+
+nav a:hover {
+
+
+    color:#b8860b;
+
+
+}
+
+
+
+nav a:hover::after {
+
+
+    width:100%;
+
+
+}
+
+/* =========================
+   HERO PREMIUM EFFECT
+========================= */
+
+
+.hero h1 {
+
+    text-shadow:
+
+    0 10px 30px rgba(212,175,55,.35);
+
+
+    animation:
+
+    titleGlow 3s ease-in-out infinite;
+
+}
+
+
+
+@keyframes titleGlow {
+
+
+    0% {
+
+        text-shadow:
+
+        0 0 10px rgba(212,175,55,.2);
+
+    }
+
+
+
+    50% {
+
+        text-shadow:
+
+        0 0 35px rgba(212,175,55,.6);
+
+    }
+
+
+
+    100% {
+
+        text-shadow:
+
+        0 0 10px rgba(212,175,55,.2);
+
+    }
+
+
+}
+
+/* =========================
+   LOVE COUNTER PREMIUM
+========================= */
+
+
+.counter {
+
+
+    position:relative;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.95),
+        rgba(255,248,230,.9)
+    );
+
+
+    border:
+
+    1px solid rgba(212,175,55,.25);
+
+
+
+    box-shadow:
+
+
+    0 20px 50px rgba(212,175,55,.15);
+
+
+
+    backdrop-filter:blur(10px);
+
+
+    font-size:20px;
+
+
+    color:#8b6b23;
+
+
+}
+
+
+
+#days-count {
+
+
+    display:inline-block;
+
+
+    font-size:45px;
+
+
+    font-weight:bold;
+
+
+    color:#b8860b;
+
+
+    margin:0 8px;
+
+
+    animation:
+
+    countGlow 2s infinite;
+
+
+}
+
+
+
+@keyframes countGlow {
+
+
+    0% {
+
+
+        transform:scale(1);
+
+
+    }
+
+
+
+    50% {
+
+
+        transform:scale(1.08);
+
+
+    }
+
+
+
+    100% {
+
+
+        transform:scale(1);
+
+
+    }
+
+
+}
+
+/* =========================
+   PREMIUM MUSIC BOX
+========================= */
+
+
+.music-box {
+
+
+    width:90%;
+
+    max-width:700px;
+
+
+    margin-top:40px;
+
+
+    padding:30px;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.95),
+        rgba(255,248,230,.85)
+    );
+
+
+    border-radius:30px;
+
+
+    border:
+
+    1px solid rgba(212,175,55,.25);
+
+
+    box-shadow:
+
+
+    0 20px 50px rgba(212,175,55,.15);
+
+
+    backdrop-filter:blur(10px);
+
+
+}
+
+
+
+
+.music-box h3 {
+
+
+    color:#8b6b23;
+
+
+    font-size:28px;
+
+
+}
+
+
+
+
+
+.music-box p {
+
+
+    color:#666;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+
+
+.music-box iframe {
+
+
+    border-radius:20px;
+
+
+    box-shadow:
+
+    0 15px 30px rgba(0,0,0,.15);
+
+
+}
+
+/* =========================
+   FLOATING HEART EFFECT
+========================= */
+
+
+.floating-heart {
+
+    position:fixed;
+
+    bottom:40px;
+
+    right:40px;
+
+
+    font-size:45px;
+
+
+    z-index:999;
+
+
+    animation:
+
+    floatingHeart 3s ease-in-out infinite;
+
+
+    filter:
+
+    drop-shadow(
+        0 0 15px rgba(255,120,150,.5)
+    );
+
+}
+
+
+
+@keyframes floatingHeart {
+
+
+    0% {
+
+
+        transform:
+
+        translateY(0)
+        scale(1);
+
+
+        opacity:.8;
+
+
+    }
+
+
+
+    50% {
+
+
+        transform:
+
+        translateY(-25px)
+        scale(1.15);
+
+
+        opacity:1;
+
+
+    }
+
+
+
+    100% {
+
+
+        transform:
+
+        translateY(0)
+        scale(1);
+
+
+        opacity:.8;
+
+
+    }
+
+
+}
+
+/* =========================
+   FINAL MOBILE POLISH
+========================= */
+
+
+@media(max-width:768px){
+
+
+    nav {
+
+        gap:12px;
+
+        padding:15px 10px;
+
+        flex-wrap:wrap;
+
+    }
+
+
+
+    nav a {
+
+        font-size:14px;
+
+    }
+
+
+
+
+    .hero {
+
+        padding:25px 15px;
+
+    }
+
+
+
+    .hero h1 {
+
+        font-size:32px;
+
+    }
+
+
+
+    section {
+
+        padding:50px 15px;
+
+    }
+
+
+
+    section h2 {
+
+        font-size:32px;
+
+    }
+
+
+
+
+    .story-timeline {
+
+        margin:50px auto;
+
+    }
+
+
+
+    .story-item {
+
+
+        width:85% !important;
+
+
+        padding:20px;
+
+
+        left:45px !important;
+
+
+    }
+
+
+
+    .story-item img,
+    .story-item video {
+
+
+        height:auto;
+
+
+        max-height:350px;
+
+
+        object-fit:contain;
+
+
+        background:#000;
+
+
+    }
+
+
+
+
+    .music-box {
+
+
+        width:100%;
+
+
+        padding:20px;
+
+
+    }
+
+
+
+
+    .music-box iframe {
+
+
+        height:180px;
+
+
+    }
+
+
+
+
+    .counter {
+
+
+        width:90%;
+
+
+        font-size:16px;
+
+
+    }
+
+
+
+
+    #days-count {
+
+
+        font-size:35px;
+
+
+    }
+
+
+
+
+    .floating-heart {
+
+
+        right:20px;
+
+
+        bottom:20px;
+
+
+        font-size:35px;
+
+
+    }
+
+
+
+}
+
+/* =========================
+   PREMIUM FOOTER
+========================= */
+
+
+footer {
+
+    position:relative;
+
+
+    margin-top:80px;
+
+
+    padding:50px 20px;
+
+
+    text-align:center;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        #fff8f0,
+        #ffffff
+    );
+
+
+    border-top:
+
+    1px solid rgba(212,175,55,.25);
+
+
+}
+
+
+
+footer::before {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    top:0;
+
+
+    left:50%;
+
+
+    transform:translateX(-50%);
+
+
+    width:120px;
+
+
+    height:3px;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        transparent,
+        #d4af37,
+        transparent
+    );
+
+
+}
+
+
+
+
+footer p:first-child {
+
+
+    color:#8b6b23;
+
+
+    font-size:22px;
+
+
+    font-weight:bold;
+
+
+}
+
+
+
+footer p:last-child {
+
+
+    color:#777;
+
+
+    font-style:italic;
+
+
+}
