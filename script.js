@@ -7,8 +7,7 @@ const API_URL = "https://script.google.com/macros/s/AKfycbxRlqmqImuFrI5eHVsIyxoy
 
 function hideLoader(){
 
-    const loader =
-    document.querySelector(".page-loader");
+    const loader = document.querySelector(".page-loader");
 
 
     if(loader){
@@ -29,313 +28,379 @@ function hideLoader(){
 
 
 
+// =======================
+// FETCH DATA
+// =======================
+
+async function loadData(){
+
+
+try{
+
+
+const [
+    memories,
+    dreams,
+    relationshipData
+
+] = await Promise.all([
+
+
+fetch(API_URL + "?sheet=Memories")
+.then(res=>res.json()),
+
+
+fetch(API_URL + "?sheet=Bucket%20List")
+.then(res=>res.json()),
+
+
+fetch(API_URL + "?sheet=Relationship")
+.then(res=>res.json())
+
+
+]);
+
+
+
+
+
+console.log("MEMORIES:", memories);
+
+console.log("BUCKET:", dreams);
+
+console.log("RELATIONSHIP:", relationshipData);
+
+
+
+
 
 // =======================
-// LOAD ALL DATA
+// LOAD MEMORIES
 // =======================
 
 
-Promise.all([
+const memoryContainer =
+document.getElementById("memory-container");
 
-    fetch(API_URL + "?sheet=Memories")
-    .then(res=>res.json()),
 
 
-    fetch(API_URL + "?sheet=Bucket%20List")
-    .then(res=>res.json()),
+if(memoryContainer){
 
 
-    fetch(API_URL + "?sheet=Relationship")
-    .then(res=>res.json())
+let memoryHTML = [];
 
 
-])
 
-.then(([memories, dreams, relationshipData])=>{
+memories.forEach(memory=>{
 
 
-    console.log("MEMORIES:", memories);
+memoryHTML.push(`
 
-    console.log("BUCKET:", dreams);
 
-    console.log("RELATIONSHIP:", relationshipData);
+<div class="card memory-card">
 
 
 
-    // =======================
-    // MEMORIES
-    // =======================
+${
+memory["Photo URL"]
 
+?
 
-    const memoryContainer =
-    document.getElementById("memory-container");
+`
 
+<img
 
+src="${memory["Photo URL"]}"
 
-    if(memoryContainer){
+class="memory-image"
 
+loading="lazy"
 
-        memories.forEach(memory=>{
+decoding="async"
 
+onerror="this.style.display='none'">
 
-            memoryContainer.innerHTML += `
+`
 
+:
 
-            <div class="card memory-card">
+""
 
+}
 
-            ${
-                memory["Photo URL"]
 
-                ?
 
-                `
-                <img
 
-                src="${memory["Photo URL"]}"
 
-                class="memory-image"
+<h3>
 
-                loading="lazy">
+${memory.Favorite ? "⭐" : "❤️"}
 
-                `
+${memory.Title || ""}
 
-                :
+</h3>
 
-                ""
 
-            }
 
 
+<p>
 
-            <h3>
+${memory.Description || ""}
 
-            ${memory.Favorite ? "⭐" : "❤️"}
+</p>
 
-            ${memory.Title || ""}
 
-            </h3>
 
 
+<p>
 
-            <p>
+📍 ${memory.Location || ""}
 
-            ${memory.Description || ""}
+</p>
 
-            </p>
 
 
 
-            <p>
+<p>
 
-            📍 ${memory.Location || ""}
+😊 ${memory.Mood || ""}
 
-            </p>
+</p>
 
 
 
-            <p>
 
-            😊 ${memory.Mood || ""}
+<p>
 
-            </p>
+⭐ ${memory.Rating || ""}
 
+</p>
 
 
-            <p>
 
-            ⭐ ${memory.Rating || ""}
+</div>
 
-            </p>
 
-
-
-            </div>
-
-
-            `;
-
-
-        });
-
-
-    }
-
-
-
-
-
-
-
-    // =======================
-    // BUCKET LIST
-    // =======================
-
-
-
-    const bucketContainer =
-    document.getElementById("bucket-container");
-
-
-
-    if(bucketContainer){
-
-
-        dreams.forEach(dream=>{
-
-
-            bucketContainer.innerHTML += `
-
-
-            <div class="card dream-card">
-
-
-                <h3>
-
-                ✨ ${dream.Dream || ""}
-
-                </h3>
-
-
-
-                <p>
-
-                ${dream.Description || ""}
-
-                </p>
-
-
-
-                <p>
-
-                🔥 Priority:
-                ${dream.Priority || ""}
-
-                </p>
-
-
-
-                <p>
-
-                📌 Status:
-                ${dream.Status || ""}
-
-                </p>
-
-
-
-            </div>
-
-
-            `;
-
-
-        });
-
-
-    }
-
-
-
-
-
-
-
-    // =======================
-    // RELATIONSHIP + SONG
-    // =======================
-
-
-    let relationship = {};
-
-
-
-    relationshipData.forEach(item=>{
-
-
-        relationship[item.Field] =
-        item.Value;
-
-
-    });
-
-
-
-
-    const name =
-    document.getElementById("couple-name");
-
-
-
-    if(name){
-
-        name.innerText =
-        relationship["Couple Name"]
-        ||
-        "THUM ❤️ PHUNG";
-
-    }
-
-
-
-
-    const since =
-    document.getElementById("together-since");
-
-
-
-    if(since){
-
-        since.innerText =
-        "Together Since "
-        +
-        (relationship["Together Since"] || "");
-
-    }
-
-
-
-
-
-    const song =
-    document.getElementById("song-link");
-
-
-
-    if(song && relationship["Our Song"]){
-
-        song.src =
-        relationship["Our Song"];
-
-    }
-
-
-
-
-
-    // =======================
-    // REMOVE LOADER AFTER DATA READY
-    // =======================
-
-
-    hideLoader();
-
-
-
-})
-
-.catch(error=>{
-
-
-    console.error("LOAD ERROR:",error);
-
-
-    hideLoader();
+`);
 
 
 });
 
 
+
+memoryContainer.innerHTML =
+memoryHTML.join("");
+
+}
+
+
+
+
+
+// =======================
+// LOAD BUCKET LIST
+// =======================
+
+
+
+const bucketContainer =
+document.getElementById("bucket-container");
+
+
+
+if(bucketContainer){
+
+
+let bucketHTML = [];
+
+
+
+dreams.forEach(dream=>{
+
+
+bucketHTML.push(`
+
+
+<div class="card dream-card">
+
+
+<h3>
+
+✨ ${dream.Dream || ""}
+
+</h3>
+
+
+
+
+<p>
+
+${dream.Description || ""}
+
+</p>
+
+
+
+
+<p>
+
+🔥 Priority:
+
+${dream.Priority || ""}
+
+</p>
+
+
+
+
+<p>
+
+📌 Status:
+
+${dream.Status || ""}
+
+</p>
+
+
+
+</div>
+
+
+`);
+
+
+
+});
+
+
+
+bucketContainer.innerHTML =
+bucketHTML.join("");
+
+}
+
+
+
+
+
+// =======================
+// RELATIONSHIP
+// =======================
+
+
+let relationship = {};
+
+
+
+relationshipData.forEach(item=>{
+
+
+relationship[item.Field] =
+item.Value;
+
+
+});
+
+
+
+
+
+const name =
+document.getElementById("couple-name");
+
+
+
+if(name){
+
+name.innerText =
+relationship["Couple Name"]
+||
+"THUM ❤️ PHUNG";
+
+}
+
+
+
+
+const since =
+document.getElementById("together-since");
+
+
+
+if(since){
+
+since.innerText =
+"Together Since "
++
+(relationship["Together Since"] || "");
+
+}
+
+
+
+
+
+
+// =======================
+// SONG
+// =======================
+
+
+const song =
+document.getElementById("song-link");
+
+
+
+if(song && relationship["Our Song"]){
+
+
+song.src =
+relationship["Our Song"];
+
+
+}
+
+
+
+
+
+
+// =======================
+// FINISH LOADING
+// =======================
+
+
+hideLoader();
+
+
+
+}
+
+
+catch(error){
+
+
+console.error(
+"LOAD ERROR:",
+error
+);
+
+
+
+hideLoader();
+
+
+}
+
+
+
+}
+
+
+
+
+
+loadData();
 
 
 
@@ -373,6 +438,7 @@ difference /
 
 
 
+
 const counter =
 document.getElementById("days-count");
 
@@ -380,7 +446,9 @@ document.getElementById("days-count");
 
 if(counter){
 
-    counter.innerText =
-    days;
+
+counter.innerText =
+days;
+
 
 }
