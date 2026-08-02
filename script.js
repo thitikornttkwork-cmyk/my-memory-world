@@ -447,3 +447,53 @@ window.addEventListener(
 
 
 revealOnScroll();
+
+// =======================
+// Floating Hearts Effect
+// =======================
+
+
+function createHeart(){
+
+
+    const heart = document.createElement("div");
+
+
+    heart.className = "floating-heart-bg";
+
+
+    heart.innerHTML = "❤️";
+
+
+    heart.style.left =
+    Math.random() * 100 + "%";
+
+
+    heart.style.animationDuration =
+    (5 + Math.random() * 5) + "s";
+
+
+    heart.style.fontSize =
+    (10 + Math.random() * 20) + "px";
+
+
+
+    document.body.appendChild(heart);
+
+
+
+    setTimeout(()=>{
+
+        heart.remove();
+
+    },10000);
+
+
+}
+
+
+
+setInterval(
+    createHeart,
+    1200
+);

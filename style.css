@@ -1798,3 +1798,82 @@ footer p:last-child {
 
 
 }
+
+/* =========================
+   FLOATING HEART BACKGROUND
+========================= */
+
+
+.floating-heart-bg {
+
+
+    position:fixed;
+
+
+    bottom:-50px;
+
+
+    z-index:-1;
+
+
+    opacity:.35;
+
+
+    pointer-events:none;
+
+
+    animation:
+
+    floatHeart linear forwards;
+
+
+}
+
+
+
+@keyframes floatHeart {
+
+
+    0%{
+
+
+        transform:
+
+        translateY(0)
+        rotate(0deg);
+
+
+        opacity:0;
+
+
+    }
+
+
+
+    20%{
+
+
+        opacity:.35;
+
+
+    }
+
+
+
+
+    100%{
+
+
+        transform:
+
+        translateY(-120vh)
+        rotate(360deg);
+
+
+        opacity:0;
+
+
+    }
+
+
+}
