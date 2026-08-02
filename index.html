@@ -2,225 +2,231 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>My Memory World</title>
-
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-<div class="floating-heart">
-❤️
-</div>
+    <!-- Floating Heart -->
+    <div class="floating-heart">
+        ❤️
+    </div>
 
 
-</div>
-
+    <!-- Navigation -->
     <nav>
-
-    <a href="#home">🏠 Home</a>
-
-    <a href="#story">💕 Story</a>
-
-    <a href="#memories">📸 Memories</a>
-
-    <a href="#dreams">✨ Dreams</a>
-
-</nav>
-
-<header class="hero" id="home">
+        <a href="#home">🏠 Home</a>
+        <a href="#story">💕 Story</a>
+        <a href="#memories">📸 Memories</a>
+        <a href="#dreams">✨ Dreams</a>
+    </nav>
 
 
-    <h1>
-        ❤️ My Memory World
-    </h1>
+    <!-- Hero -->
+    <header class="hero" id="home">
+
+        <h1>❤️ My Memory World</h1>
+
+        <h2 id="couple-name"></h2>
+
+        <p id="together-since"></p>
 
 
-    <h2 id="couple-name"></h2>
+        <div class="counter">
+
+            ❤️ Together for
+
+            <span id="days-count"></span>
+
+            days
+
+        </div>
 
 
-    <p id="together-since"></p>
-
-    <div class="counter">
-
-    ❤️ Together for
-
-    <span id="days-count">
-        
-    </span>
-
-    days
-
-</div>
-
-
-    <p class="love-text">
-
-        "Every moment with you becomes a beautiful memory."
-
-    </p>
-
-    <div class="music-box">
-
-    🎵 Our Song
-
-    <p>
-        A song that reminds us of our memories.
-    </p>
-
-    <iframe
-id="song-link"
-width="100%"
-height="200"
-src=""
-allow="autoplay">
-</iframe>
-
-</div>
-
-
-</header>
-
-
-
-
-<section class="about" id="story">
-
-
-    <h2>
-        💕 Our Story
-    </h2>
-
-
-   <div class="story-timeline">
-
-
-    <div class="story-item">
-
-        <span>
-            28/04/2026
-        </span>
-
-        <h3>
-            ❤️ Our Journey Started
-        </h3>
-
-        <p>
-            The beginning of our beautiful story.
+        <p class="love-text">
+            "Every moment with you becomes a beautiful memory."
         </p>
 
-    </div>
+
+        <div class="music-box">
+
+            <h3>🎵 Our Song</h3>
+
+            <p>
+                A song that reminds us of our memories.
+            </p>
+
+
+            <iframe
+                id="song-link"
+                width="100%"
+                height="200"
+                src=""
+                allow="autoplay">
+            </iframe>
+
+        </div>
+
+    </header>
 
 
 
-    <div class="story-item">
+    <!-- Story -->
+    <section class="about" id="story">
 
-        <span>
-            2026
-        </span>
 
-        <h3>
-            📸 Creating Memories
-        </h3>
+        <h2>💕 Our Story</h2>
+
+
+        <div class="story-timeline">
+
+
+
+            <div class="story-item">
+
+
+                <img 
+                    src="story1.jpg"
+                    alt="Our first memory"
+                >
+
+
+                <span>28/04/2026</span>
+
+
+                <h3>
+                    ❤️ Where Our Story Began
+                </h3>
+
+
+                <p>
+                    The day our beautiful journey began. A simple moment that
+                    became the first page of our story together.
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <div class="story-item">
+
+
+                <img 
+                    src="story2.jpg"
+                    alt="Making memories"
+                >
+
+
+                <span>Every Day</span>
+
+
+                <h3>
+                    📸 Making Memories
+                </h3>
+
+
+                <p>
+                    Every smile, every adventure, and every little moment
+                    becomes another beautiful page in our story.
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <div class="story-item">
+
+
+                <img 
+                    src="story3.jpg"
+                    alt="Our future story"
+                >
+
+
+                <span>Always</span>
+
+
+                <h3>
+                    ✨ Our Story Continues
+                </h3>
+
+
+                <p>
+                    Our journey is still being written, one beautiful memory at
+                    a time, with many more chapters waiting ahead.
+                </p>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- Memories -->
+    <section id="memories">
+
+        <h2>📸 Memories</h2>
+
+        <div id="memory-container" class="timeline"></div>
+
+    </section>
+
+
+
+
+
+    <!-- Bucket List -->
+    <section id="dreams">
+
+        <h2>✨ Bucket List</h2>
+
+        <div id="bucket-container" class="dream-container"></div>
+
+    </section>
+
+
+
+
+
+    <!-- Footer -->
+    <footer>
 
         <p>
-            Every moment becomes a special memory.
+            ❤️ Created with love for THUM & PHUNG
         </p>
 
-    </div>
-
-
-
-    <div class="story-item">
-
-        <span>
-            Future
-        </span>
-
-        <h3>
-            ✨ Our Dreams
-        </h3>
 
         <p>
-            More adventures and beautiful moments together.
+            Every moment is a memory.
         </p>
 
-    </div>
 
-
-</div>
-
-
-</section>
+    </footer>
 
 
 
 
-
-<section id="memories">
-
-
-    <h2>
-        📸 Memories
-    </h2>
-
-
-   <div id="memory-container" class="timeline">
-
-</div>
-
-
-</section>
-
-
-
-
-
-<section id="dreams">
-
-
-    <h2>
-        ✨ Bucket List
-    </h2>
-
-
-   <div id="bucket-container" class="dream-container">
-
-</div>
-
-</section>
-
-
-
-
-
-<footer>
-
-<p>
-❤️ Created with love for THUM & PHUNG
-</p>
-
-<p>
-Every moment is a memory.
-</p>
-
-</footer>
-
-
-
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 
 </body>
-
 
 </html>
