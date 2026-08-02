@@ -1763,39 +1763,68 @@ footer p:last-child {
 
 
 
-.story-item,
-.memory-card,
-.dream-card {
+/* =========================
+   SCROLL ANIMATION FIX
+========================= */
 
+
+/* STORY REVEAL ONLY */
+
+.story-item {
 
     opacity:0;
 
-
-    transform:
-
-    translateY(40px);
-
+    transform:translateY(40px);
 
     transition:
-
     opacity .8s ease,
     transform .8s ease;
 
+}
+
+
+.story-item.show {
+
+    opacity:1;
+
+    transform:translateY(0);
 
 }
 
 
 
-.show {
+/* =========================
+   API DATA CARD FIX
+========================= */
 
+
+/* Memories + Bucket List
+   loaded from Google Sheet */
+
+.memory-card,
+.dream-card {
 
     opacity:1;
 
+    transform:none;
 
-    transform:
+    transition:
 
-    translateY(0);
+    transform .4s ease,
+    box-shadow .4s ease;
 
+}
+
+
+
+.memory-card:hover,
+.dream-card:hover {
+
+    transform:translateY(-10px);
+
+    box-shadow:
+
+    0 25px 50px rgba(212,175,55,.25);
 
 }
 
