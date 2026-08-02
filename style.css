@@ -2267,3 +2267,139 @@ nav a:hover {
     overflow:hidden;
 
 }
+
+/* =========================
+   WEDDING FOOTER STYLE
+========================= */
+
+
+footer {
+
+
+    text-align:center;
+
+
+    padding:70px 20px;
+
+
+    margin-top:80px;
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #fff8f0,
+
+        #ffffff
+
+    );
+
+
+    border-top:
+
+
+    1px solid rgba(212,175,55,.25);
+
+
+}
+
+
+
+.footer-heart {
+
+
+    font-size:40px;
+
+
+    animation:
+
+    heartbeat 2s infinite;
+
+
+}
+
+
+
+footer h3 {
+
+
+    margin:20px 0 10px;
+
+
+    color:#8b6b23;
+
+
+    font-size:30px;
+
+
+    letter-spacing:3px;
+
+
+    font-family:Georgia,serif;
+
+
+}
+
+
+
+footer p {
+
+
+    color:#777;
+
+
+    line-height:1.8;
+
+
+}
+
+
+
+.footer-year {
+
+
+    color:#b8860b;
+
+
+    font-size:14px;
+
+
+}
+
+
+
+@keyframes heartbeat {
+
+
+    0%{
+
+
+        transform:scale(1);
+
+
+    }
+
+
+    50%{
+
+
+        transform:scale(1.15);
+
+
+    }
+
+
+    100%{
+
+
+        transform:scale(1);
+
+
+    }
+
+
+}
