@@ -497,3 +497,32 @@ setInterval(
     createHeart,
     1200
 );
+
+// =======================
+// FORCE REMOVE LOADER
+// =======================
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        const loader =
+        document.querySelector(".page-loader");
+
+
+        if(loader){
+
+            loader.style.opacity="0";
+
+
+            setTimeout(()=>{
+
+                loader.style.display="none";
+
+            },500);
+
+        }
+
+    },3000);
+
+});
