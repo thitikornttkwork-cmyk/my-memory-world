@@ -173,3 +173,46 @@ fetch(API_URL + "?sheet=Bucket%20List")
 console.error("Bucket Error:", err);
 
 });
+
+// =======================
+// LOAD RELATIONSHIP
+// =======================
+
+fetch(API_URL + "?sheet=Relationship")
+
+.then(res => res.json())
+
+.then(data => {
+
+
+    console.log("RELATIONSHIP:", data);
+
+
+    let relationship = {};
+
+
+    data.forEach(item => {
+
+        relationship[item.Field] = item.Value;
+
+    });
+
+
+
+    document.getElementById("couple-name").innerText =
+    relationship["Couple Name"] || "THUM ❤️ PHUNG";
+
+
+
+    document.getElementById("together-since").innerText =
+    "Together Since " + (relationship["Together Since"] || "");
+
+
+
+})
+
+.catch(err=>{
+
+    console.error("Relationship Error:", err);
+
+});
