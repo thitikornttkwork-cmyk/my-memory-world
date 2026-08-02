@@ -2,32 +2,86 @@ const API_URL = "https://script.google.com/macros/s/AKfycbxRlqmqImuFrI5eHVsIyxoy
 
 
 // =======================
-// LOAD MEMORIES
+// PAGE LOADER
 // =======================
 
-fetch(API_URL + "?sheet=Memories")
+function hideLoader(){
 
-.then(res => res.json())
-
-.then(data => {
-
-
-    console.log("MEMORIES:", data);
+    const loader =
+    document.querySelector(".page-loader");
 
 
-    const container =
+    if(loader){
+
+        loader.style.opacity = "0";
+
+
+        setTimeout(()=>{
+
+            loader.style.display = "none";
+
+        },500);
+
+    }
+
+}
+
+
+
+
+
+// =======================
+// LOAD ALL DATA
+// =======================
+
+
+Promise.all([
+
+    fetch(API_URL + "?sheet=Memories")
+    .then(res=>res.json()),
+
+
+    fetch(API_URL + "?sheet=Bucket%20List")
+    .then(res=>res.json()),
+
+
+    fetch(API_URL + "?sheet=Relationship")
+    .then(res=>res.json())
+
+
+])
+
+.then(([memories, dreams, relationshipData])=>{
+
+
+    console.log("MEMORIES:", memories);
+
+    console.log("BUCKET:", dreams);
+
+    console.log("RELATIONSHIP:", relationshipData);
+
+
+
+    // =======================
+    // MEMORIES
+    // =======================
+
+
+    const memoryContainer =
     document.getElementById("memory-container");
 
 
-    if(!container) return;
+
+    if(memoryContainer){
 
 
-    data.forEach(memory => {
+        memories.forEach(memory=>{
 
 
-        container.innerHTML += `
+            memoryContainer.innerHTML += `
 
-        <div class="card memory-card">
+
+            <div class="card memory-card">
 
 
             ${
@@ -36,10 +90,14 @@ fetch(API_URL + "?sheet=Memories")
                 ?
 
                 `
-                <img 
+                <img
+
                 src="${memory["Photo URL"]}"
+
                 class="memory-image"
+
                 loading="lazy">
+
                 `
 
                 :
@@ -61,161 +119,138 @@ fetch(API_URL + "?sheet=Memories")
 
 
             <p>
+
             ${memory.Description || ""}
+
             </p>
 
 
 
             <p>
+
             📍 ${memory.Location || ""}
+
             </p>
 
 
 
             <p>
+
             😊 ${memory.Mood || ""}
+
             </p>
 
 
 
             <p>
+
             ⭐ ${memory.Rating || ""}
+
             </p>
 
 
 
-        </div>
-
-        `;
+            </div>
 
 
-    });
+            `;
 
 
-})
+        });
 
-.catch(err=>{
 
-    console.error("Memory Error:",err);
-
-});
+    }
 
 
 
 
 
-// =======================
-// LOAD BUCKET LIST
-// =======================
 
 
-fetch(API_URL + "?sheet=Bucket%20List")
-
-.then(res=>res.json())
-
-.then(data=>{
-
-
-    console.log("BUCKET:",data);
+    // =======================
+    // BUCKET LIST
+    // =======================
 
 
 
-    const container =
+    const bucketContainer =
     document.getElementById("bucket-container");
 
 
 
-    if(!container) return;
+    if(bucketContainer){
+
+
+        dreams.forEach(dream=>{
+
+
+            bucketContainer.innerHTML += `
+
+
+            <div class="card dream-card">
+
+
+                <h3>
+
+                ✨ ${dream.Dream || ""}
+
+                </h3>
 
 
 
-    data.forEach(dream=>{
+                <p>
 
+                ${dream.Description || ""}
 
-        container.innerHTML += `
-
-
-        <div class="card dream-card">
-
-
-            <h3>
-
-            ✨ ${dream.Dream || ""}
-
-            </h3>
+                </p>
 
 
 
-            <p>
+                <p>
 
-            ${dream.Description || ""}
+                🔥 Priority:
+                ${dream.Priority || ""}
 
-            </p>
-
-
-
-            <p>
-
-            🔥 Priority:
-            ${dream.Priority || ""}
-
-            </p>
+                </p>
 
 
 
-            <p>
+                <p>
 
-            📌 Status:
-            ${dream.Status || ""}
+                📌 Status:
+                ${dream.Status || ""}
 
-            </p>
-
-
-
-        </div>
+                </p>
 
 
-        `;
+
+            </div>
 
 
-    });
+            `;
 
 
-})
-
-.catch(err=>{
+        });
 
 
-console.error("Bucket Error:",err);
-
-
-});
+    }
 
 
 
 
 
-// =======================
-// LOAD RELATIONSHIP + SONG
-// =======================
 
 
-fetch(API_URL + "?sheet=Relationship")
-
-.then(res=>res.json())
-
-.then(data=>{
-
-
-    console.log("RELATIONSHIP:",data);
-
+    // =======================
+    // RELATIONSHIP + SONG
+    // =======================
 
 
     let relationship = {};
 
 
 
-    data.forEach(item=>{
+    relationshipData.forEach(item=>{
 
 
         relationship[item.Field] =
@@ -223,6 +258,7 @@ fetch(API_URL + "?sheet=Relationship")
 
 
     });
+
 
 
 
@@ -242,6 +278,7 @@ fetch(API_URL + "?sheet=Relationship")
 
 
 
+
     const since =
     document.getElementById("together-since");
 
@@ -255,6 +292,8 @@ fetch(API_URL + "?sheet=Relationship")
         (relationship["Together Since"] || "");
 
     }
+
+
 
 
 
@@ -272,15 +311,32 @@ fetch(API_URL + "?sheet=Relationship")
 
 
 
+
+
+    // =======================
+    // REMOVE LOADER AFTER DATA READY
+    // =======================
+
+
+    hideLoader();
+
+
+
 })
 
-.catch(err=>{
+.catch(error=>{
 
 
-console.error("Relationship Error:",err);
+    console.error("LOAD ERROR:",error);
+
+
+    hideLoader();
 
 
 });
+
+
+
 
 
 
@@ -308,8 +364,11 @@ today - startDate;
 
 const days =
 Math.floor(
+
 difference /
+
 (1000 * 60 * 60 * 24)
+
 );
 
 
@@ -321,47 +380,7 @@ document.getElementById("days-count");
 
 if(counter){
 
-    counter.innerText = days;
+    counter.innerText =
+    days;
 
 }
-
-
-
-
-
-// =======================
-// REMOVE LOADER
-// =======================
-
-
-window.addEventListener("load",()=>{
-
-
-    setTimeout(()=>{
-
-
-        const loader =
-        document.querySelector(".page-loader");
-
-
-
-        if(loader){
-
-            loader.style.opacity="0";
-
-
-            setTimeout(()=>{
-
-                loader.style.display="none";
-
-            },500);
-
-        }
-
-
-
-    },1000);
-
-
-
-});
