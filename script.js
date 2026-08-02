@@ -109,3 +109,67 @@ loader.style.display="none";
 
 
 });
+
+// =======================
+// LOAD BUCKET LIST
+// =======================
+
+fetch(API_URL + "?sheet=Bucket%20List")
+
+.then(res => res.json())
+
+.then(data => {
+
+
+    console.log("BUCKET:", data);
+
+
+    const container =
+    document.getElementById("bucket-container");
+
+
+    data.forEach(dream => {
+
+
+        container.innerHTML += `
+
+        <div class="card">
+
+
+            <h3>
+            ✨ ${dream.Dream}
+            </h3>
+
+
+            <p>
+            ${dream.Description || ""}
+            </p>
+
+
+            <p>
+            🔥 Priority:
+            ${dream.Priority || ""}
+            </p>
+
+
+            <p>
+            📌 Status:
+            ${dream.Status || ""}
+            </p>
+
+
+        </div>
+
+        `;
+
+
+    });
+
+
+})
+
+.catch(err=>{
+
+console.error("Bucket Error:", err);
+
+});
