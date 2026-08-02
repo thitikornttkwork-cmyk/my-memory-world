@@ -6,6 +6,7 @@
     box-sizing: border-box;
 }
 
+
 body {
 
     margin:0;
@@ -24,6 +25,7 @@ body {
     color:#444;
 
 }
+
 
 
 /* =========================
@@ -54,6 +56,7 @@ nav {
 }
 
 
+
 nav a {
 
     text-decoration:none;
@@ -63,6 +66,8 @@ nav a {
     font-weight:bold;
 
 }
+
+
 
 
 
@@ -89,6 +94,7 @@ nav a {
 }
 
 
+
 .hero h1 {
 
     font-size:50px;
@@ -96,6 +102,7 @@ nav a {
     color:#b8860b;
 
 }
+
 
 
 
@@ -116,6 +123,8 @@ nav a {
 
 
 
+
+
 /* =========================
    SECTION
 ========================= */
@@ -127,6 +136,7 @@ section {
 }
 
 
+
 section h2 {
 
     text-align:center;
@@ -136,6 +146,8 @@ section h2 {
     color:#8b6b23;
 
 }
+
+
 
 
 
@@ -153,6 +165,8 @@ section h2 {
     margin:80px auto;
 
 }
+
+
 
 
 
@@ -174,6 +188,7 @@ section h2 {
         transparent
     );
 
+
     top:0;
 
     bottom:0;
@@ -186,7 +201,9 @@ section h2 {
 
 
 
-/* Story card */
+
+
+/* Story Card */
 
 .story-item {
 
@@ -221,6 +238,8 @@ section h2 {
 
 
 
+
+
 /* Left */
 
 .story-item:nth-child(odd){
@@ -228,6 +247,7 @@ section h2 {
     left:0;
 
 }
+
 
 
 
@@ -241,7 +261,9 @@ section h2 {
 
 
 
-/* Timeline icon */
+
+
+/* Timeline Icon */
 
 .story-item::before {
 
@@ -254,20 +276,27 @@ section h2 {
 
     width:55px;
 
+
     height:55px;
+
 
 
     display:flex;
 
+
     align-items:center;
 
+
     justify-content:center;
+
 
 
     border-radius:50%;
 
 
+
     background:
+
     linear-gradient(
         145deg,
         white,
@@ -275,16 +304,21 @@ section h2 {
     );
 
 
+
     color:#b8860b;
+
 
 
     right:-82px;
 
 
+
     top:35px;
 
 
+
     box-shadow:
+
 
     0 0 0 6px rgba(212,175,55,.15);
 
@@ -293,11 +327,17 @@ section h2 {
 
 
 
+
+
 .story-item:nth-child(even)::before{
+
 
     left:-82px;
 
+
 }
+
+
 
 
 
@@ -307,22 +347,34 @@ section h2 {
 
 
     transform:
+
     translateY(-12px);
+
 
 
     box-shadow:
 
+
     0 25px 50px rgba(212,175,55,.25);
+
 
 
 }
 
 
 
-/* Image */
 
 
-.story-item img {
+
+
+/* =========================
+   STORY MEDIA
+   IMAGE + VIDEO
+========================= */
+
+
+.story-item img,
+.story-item video {
 
 
     width:100%;
@@ -340,7 +392,27 @@ section h2 {
     margin-bottom:20px;
 
 
+    display:block;
+
+
 }
+
+
+
+
+
+.story-item video {
+
+
+    background:black;
+
+
+}
+
+
+
+
+
 
 
 
@@ -366,6 +438,8 @@ section h2 {
 
 
 
+
+
 /* Title */
 
 
@@ -382,6 +456,8 @@ section h2 {
 
 
 
+
+
 /* Text */
 
 
@@ -392,6 +468,8 @@ section h2 {
 
 
 }
+
+
 
 
 
@@ -422,10 +500,13 @@ section h2 {
 
     box-shadow:
 
+
     0 15px 30px rgba(0,0,0,.1);
 
 
+
 }
+
 
 
 
@@ -444,6 +525,9 @@ section h2 {
 
 
 
+
+
+
 /* =========================
    MOBILE
 ========================= */
@@ -452,47 +536,69 @@ section h2 {
 @media(max-width:768px){
 
 
+
     .story-timeline::before{
+
 
         left:25px;
 
+
     }
+
 
 
 
     .story-item,
 
+
     .story-item:nth-child(even),
+
 
     .story-item:nth-child(odd){
 
+
         width:80%;
+
 
         left:60px;
 
+
     }
+
+
+
 
 
 
     .story-item::before,
 
+
     .story-item:nth-child(even)::before{
+
 
 
         left:-60px;
 
+
         right:auto;
 
 
+
     }
+
+
 
 
 
     .hero h1{
 
+
         font-size:35px;
 
+
     }
+
+
 
 
 }
