@@ -1954,3 +1954,316 @@ nav a:hover {
 
 
 }
+
+/* =========================
+   HERO LUXURY POLISH
+========================= */
+
+
+.hero h1 {
+
+
+    animation:
+
+    titleGlow 3s infinite alternate;
+
+
+    letter-spacing:2px;
+
+
+}
+
+
+
+#couple-name {
+
+
+    font-size:42px;
+
+
+    color:#8b6b23;
+
+
+    margin:20px 0;
+
+
+    font-family:
+    "Georgia",
+    serif;
+
+
+    animation:
+
+    fadeUp 1.5s ease;
+
+
+}
+
+
+
+#together-since {
+
+
+    color:#b8860b;
+
+
+    font-size:20px;
+
+
+    letter-spacing:1px;
+
+
+}
+
+
+
+.love-text {
+
+
+    max-width:600px;
+
+
+    font-size:20px;
+
+
+    font-style:italic;
+
+
+    color:#777;
+
+
+    margin:30px;
+
+
+}
+
+
+
+.counter {
+
+
+    border:
+
+    1px solid rgba(212,175,55,.3);
+
+
+    background:
+
+    linear-gradient(
+
+        145deg,
+
+        #fff,
+
+        #fff8e7
+
+    );
+
+
+}
+
+
+
+@keyframes titleGlow {
+
+
+    from {
+
+
+        text-shadow:
+
+        0 0 10px rgba(212,175,55,.2);
+
+
+    }
+
+
+    to {
+
+
+        text-shadow:
+
+        0 0 30px rgba(212,175,55,.6);
+
+
+    }
+
+
+}
+
+
+
+@keyframes fadeUp {
+
+
+    from {
+
+
+        opacity:0;
+
+
+        transform:
+
+        translateY(30px);
+
+
+    }
+
+
+    to {
+
+
+        opacity:1;
+
+
+        transform:
+
+        translateY(0);
+
+
+    }
+
+
+}
+
+/* =========================
+   MUSIC BOX LUXURY STYLE
+========================= */
+
+
+.music-box {
+
+
+    width:90%;
+
+
+    max-width:700px;
+
+
+    margin-top:40px;
+
+
+    padding:30px;
+
+
+    border-radius:30px;
+
+
+
+    background:
+
+    rgba(255,255,255,.65);
+
+
+
+    backdrop-filter:
+
+    blur(15px);
+
+
+
+    border:
+
+    1px solid rgba(212,175,55,.25);
+
+
+
+    box-shadow:
+
+
+    0 20px 50px rgba(0,0,0,.12);
+
+
+
+    transition:.4s;
+
+
+
+}
+
+
+
+.music-box:hover {
+
+
+    transform:
+
+    translateY(-8px);
+
+
+
+    box-shadow:
+
+
+    0 30px 70px rgba(212,175,55,.25);
+
+
+
+}
+
+
+
+
+.music-box h3 {
+
+
+    color:#8b6b23;
+
+
+    font-size:28px;
+
+
+    letter-spacing:1px;
+
+
+}
+
+
+
+.music-box p {
+
+
+    color:#666;
+
+
+    font-size:16px;
+
+
+    line-height:1.8;
+
+
+}
+
+
+
+
+.music-box iframe {
+
+
+    margin-top:20px;
+
+
+    border-radius:20px;
+
+
+    border:none;
+
+
+    box-shadow:
+
+
+    0 10px 30px rgba(0,0,0,.15);
+
+
+
+}
+
+/* =========================
+   HERO OVERFLOW FIX
+========================= */
+
+.hero {
+
+    overflow:hidden;
+
+}
