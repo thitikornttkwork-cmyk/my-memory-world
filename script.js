@@ -19,51 +19,69 @@ fetch(API_URL + "?sheet=Memories")
     document.getElementById("memory-container");
 
 
+    if(!container) return;
+
+
     data.forEach(memory => {
 
 
         container.innerHTML += `
 
-        <div class="card">
+        <div class="card memory-card">
 
 
             ${
                 memory["Photo URL"]
+
                 ?
+
                 `
                 <img 
                 src="${memory["Photo URL"]}"
-                class="memory-image">
+                class="memory-image"
+                loading="lazy">
                 `
+
                 :
+
                 ""
+
             }
 
 
+
             <h3>
+
             ${memory.Favorite ? "⭐" : "❤️"}
-            ${memory.Title}
+
+            ${memory.Title || ""}
+
             </h3>
 
 
+
             <p>
-            ${memory.Description}
+            ${memory.Description || ""}
             </p>
 
 
+
             <p>
-            📍 ${memory.Location}
+            📍 ${memory.Location || ""}
             </p>
 
 
+
             <p>
-            😊 ${memory.Mood}
+            😊 ${memory.Mood || ""}
             </p>
 
 
+
             <p>
-            ⭐ ${memory.Rating}
+            ⭐ ${memory.Rating || ""}
             </p>
+
 
 
         </div>
@@ -78,87 +96,84 @@ fetch(API_URL + "?sheet=Memories")
 
 .catch(err=>{
 
-console.error(err);
+    console.error("Memory Error:",err);
 
 });
 
 
 
-// =======================
-// REMOVE LOADER
-// =======================
 
-window.addEventListener("load",()=>{
-
-
-setTimeout(()=>{
-
-
-const loader =
-document.querySelector(".page-loader");
-
-
-if(loader){
-
-loader.style.display="none";
-
-}
-
-
-},2000);
-
-
-});
 
 // =======================
 // LOAD BUCKET LIST
 // =======================
 
+
 fetch(API_URL + "?sheet=Bucket%20List")
 
-.then(res => res.json())
+.then(res=>res.json())
 
-.then(data => {
+.then(data=>{
 
 
-    console.log("BUCKET:", data);
+    console.log("BUCKET:",data);
+
 
 
     const container =
     document.getElementById("bucket-container");
 
 
-    data.forEach(dream => {
+
+    if(!container) return;
+
+
+
+    data.forEach(dream=>{
 
 
         container.innerHTML += `
 
-        <div class="card">
+
+        <div class="card dream-card">
 
 
             <h3>
-            ✨ ${dream.Dream}
+
+            ✨ ${dream.Dream || ""}
+
             </h3>
 
 
+
             <p>
+
             ${dream.Description || ""}
+
             </p>
 
 
+
             <p>
+
             🔥 Priority:
             ${dream.Priority || ""}
+
             </p>
+
 
 
             <p>
+
             📌 Status:
             ${dream.Status || ""}
+
             </p>
+
 
 
         </div>
+
 
         `;
 
@@ -170,42 +185,90 @@ fetch(API_URL + "?sheet=Bucket%20List")
 
 .catch(err=>{
 
-console.error("Bucket Error:", err);
+
+console.error("Bucket Error:",err);
+
 
 });
 
+
+
+
+
 // =======================
-// LOAD RELATIONSHIP
+// LOAD RELATIONSHIP + SONG
 // =======================
+
 
 fetch(API_URL + "?sheet=Relationship")
 
-.then(res => res.json())
+.then(res=>res.json())
 
-.then(data => {
+.then(data=>{
 
 
-    console.log("RELATIONSHIP:", data);
+    console.log("RELATIONSHIP:",data);
+
 
 
     let relationship = {};
 
 
-    data.forEach(item => {
 
-        relationship[item.Field] = item.Value;
+    data.forEach(item=>{
+
+
+        relationship[item.Field] =
+        item.Value;
+
 
     });
 
 
 
-    document.getElementById("couple-name").innerText =
-    relationship["Couple Name"] || "THUM ❤️ PHUNG";
+    const name =
+    document.getElementById("couple-name");
 
 
 
-    document.getElementById("together-since").innerText =
-    "Together Since " + (relationship["Together Since"] || "");
+    if(name){
+
+        name.innerText =
+        relationship["Couple Name"]
+        ||
+        "THUM ❤️ PHUNG";
+
+    }
+
+
+
+    const since =
+    document.getElementById("together-since");
+
+
+
+    if(since){
+
+        since.innerText =
+        "Together Since "
+        +
+        (relationship["Together Since"] || "");
+
+    }
+
+
+
+    const song =
+    document.getElementById("song-link");
+
+
+
+    if(song && relationship["Our Song"]){
+
+        song.src =
+        relationship["Our Song"];
+
+    }
 
 
 
@@ -213,30 +276,47 @@ fetch(API_URL + "?sheet=Relationship")
 
 .catch(err=>{
 
-    console.error("Relationship Error:", err);
+
+console.error("Relationship Error:",err);
+
 
 });
+
+
+
+
 
 // =======================
 // ANNIVERSARY COUNTER
 // =======================
 
-const startDate = new Date("2026-04-28");
+
+const startDate =
+new Date("2026-04-28");
 
 
-const today = new Date();
+
+const today =
+new Date();
 
 
-const difference = today - startDate;
+
+const difference =
+today - startDate;
 
 
-const days = Math.floor(
-    difference / (1000 * 60 * 60 * 24)
+
+const days =
+Math.floor(
+difference /
+(1000 * 60 * 60 * 24)
 );
+
 
 
 const counter =
 document.getElementById("days-count");
+
 
 
 if(counter){
@@ -245,49 +325,43 @@ if(counter){
 
 }
 
+
+
+
+
 // =======================
-// LOAD OUR SONG
+// REMOVE LOADER
 // =======================
 
-fetch(API_URL + "?sheet=Relationship")
 
-.then(res => res.json())
-
-.then(data => {
+window.addEventListener("load",()=>{
 
 
-    let relationship = {};
+    setTimeout(()=>{
 
 
-    data.forEach(item => {
-
-        relationship[item.Field] = item.Value;
-
-    });
+        const loader =
+        document.querySelector(".page-loader");
 
 
 
-    const song =
-    relationship["Our Song"];
+        if(loader){
+
+            loader.style.opacity="0";
+
+
+            setTimeout(()=>{
+
+                loader.style.display="none";
+
+            },500);
+
+        }
 
 
 
-    const player =
-    document.getElementById("song-link");
+    },1000);
 
 
-
-    if(song && player){
-
-        player.src = song;
-
-    }
-
-
-})
-
-.catch(err => {
-
-    console.error("Song Error:", err);
 
 });
