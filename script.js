@@ -2,18 +2,16 @@ const API_URL = "https://script.google.com/macros/s/AKfycbxRlqmqImuFrI5eHVsIyxoy
 
 
 // =======================
-// PAGE LOADER
+// LOADER
 // =======================
 
 function hideLoader(){
 
     const loader = document.querySelector(".page-loader");
 
-
     if(loader){
 
         loader.style.opacity = "0";
-
 
         setTimeout(()=>{
 
@@ -27,55 +25,38 @@ function hideLoader(){
 
 
 
-
 // =======================
-// FETCH DATA
+// LOAD DATA
 // =======================
 
-async function loadData(){
+async function loadWebsite(){
 
 
 try{
 
 
-const [
-    memories,
-    dreams,
-    relationshipData
-
-] = await Promise.all([
-
-
-fetch(API_URL + "?sheet=Memories")
-.then(res=>res.json()),
-
-
-fetch(API_URL + "?sheet=Bucket%20List")
-.then(res=>res.json()),
-
-
-fetch(API_URL + "?sheet=Relationship")
-.then(res=>res.json())
-
-
-]);
+const memories =
+await fetch(API_URL + "?sheet=Memories")
+.then(res=>res.json());
 
 
 
+const bucket =
+await fetch(API_URL + "?sheet=Bucket%20List")
+.then(res=>res.json());
 
 
-console.log("MEMORIES:", memories);
 
-console.log("BUCKET:", dreams);
-
-console.log("RELATIONSHIP:", relationshipData);
+const relationshipData =
+await fetch(API_URL + "?sheet=Relationship")
+.then(res=>res.json());
 
 
 
 
 
 // =======================
-// LOAD MEMORIES
+// MEMORIES
 // =======================
 
 
@@ -83,22 +64,19 @@ const memoryContainer =
 document.getElementById("memory-container");
 
 
-
 if(memoryContainer){
 
 
-let memoryHTML = [];
-
+memoryContainer.innerHTML="";
 
 
 memories.forEach(memory=>{
 
 
-memoryHTML.push(`
+memoryContainer.innerHTML += `
 
 
 <div class="card memory-card">
-
 
 
 ${
@@ -107,19 +85,10 @@ memory["Photo URL"]
 ?
 
 `
-
-<img
-
+<img 
 src="${memory["Photo URL"]}"
-
 class="memory-image"
-
-loading="lazy"
-
-decoding="async"
-
-onerror="this.style.display='none'">
-
+loading="lazy">
 `
 
 :
@@ -127,8 +96,6 @@ onerror="this.style.display='none'">
 ""
 
 }
-
-
 
 
 
@@ -142,38 +109,26 @@ ${memory.Title || ""}
 
 
 
-
 <p>
-
 ${memory.Description || ""}
-
 </p>
 
 
 
-
 <p>
-
 📍 ${memory.Location || ""}
-
 </p>
 
 
 
-
 <p>
-
 😊 ${memory.Mood || ""}
-
 </p>
 
 
 
-
 <p>
-
 ⭐ ${memory.Rating || ""}
-
 </p>
 
 
@@ -181,15 +136,11 @@ ${memory.Description || ""}
 </div>
 
 
-`);
+`;
 
 
 });
 
-
-
-memoryContainer.innerHTML =
-memoryHTML.join("");
 
 }
 
@@ -198,84 +149,59 @@ memoryHTML.join("");
 
 
 // =======================
-// LOAD BUCKET LIST
+// BUCKET
 // =======================
-
 
 
 const bucketContainer =
 document.getElementById("bucket-container");
 
 
-
 if(bucketContainer){
 
 
-let bucketHTML = [];
+bucketContainer.innerHTML="";
 
 
+bucket.forEach(item=>{
 
-dreams.forEach(dream=>{
 
-
-bucketHTML.push(`
+bucketContainer.innerHTML += `
 
 
 <div class="card dream-card">
 
 
 <h3>
-
-✨ ${dream.Dream || ""}
-
+✨ ${item.Dream || item.Title || ""}
 </h3>
 
 
-
-
 <p>
-
-${dream.Description || ""}
-
+${item.Description || ""}
 </p>
 
 
-
-
 <p>
-
 🔥 Priority:
-
-${dream.Priority || ""}
-
+${item.Priority || ""}
 </p>
-
-
 
 
 <p>
-
 📌 Status:
-
-${dream.Status || ""}
-
+${item.Status || ""}
 </p>
-
 
 
 </div>
 
 
-`);
-
+`;
 
 
 });
 
-
-
-bucketContainer.innerHTML =
-bucketHTML.join("");
 
 }
 
@@ -288,26 +214,21 @@ bucketHTML.join("");
 // =======================
 
 
-let relationship = {};
-
+let relationship={};
 
 
 relationshipData.forEach(item=>{
 
 
-relationship[item.Field] =
-item.Value;
+relationship[item.Field]=item.Value;
 
 
 });
 
 
 
-
-
 const name =
 document.getElementById("couple-name");
-
 
 
 if(name){
@@ -326,7 +247,6 @@ const since =
 document.getElementById("together-since");
 
 
-
 if(since){
 
 since.innerText =
@@ -339,24 +259,14 @@ since.innerText =
 
 
 
-
-
-// =======================
-// SONG
-// =======================
-
-
 const song =
 document.getElementById("song-link");
 
 
-
 if(song && relationship["Our Song"]){
-
 
 song.src =
 relationship["Our Song"];
-
 
 }
 
@@ -364,10 +274,8 @@ relationship["Our Song"];
 
 
 
+console.log("Website Loaded Successfully");
 
-// =======================
-// FINISH LOADING
-// =======================
 
 
 hideLoader();
@@ -381,10 +289,9 @@ catch(error){
 
 
 console.error(
-"LOAD ERROR:",
+"Loading Error:",
 error
 );
-
 
 
 hideLoader();
@@ -393,49 +300,30 @@ hideLoader();
 }
 
 
-
 }
 
 
 
 
 
-loadData();
-
-
-
-
-
-
 // =======================
-// ANNIVERSARY COUNTER
+// DAYS COUNTER
 // =======================
 
 
-const startDate =
+const start =
 new Date("2026-04-28");
 
 
-
-const today =
+const now =
 new Date();
-
-
-
-const difference =
-today - startDate;
-
 
 
 const days =
 Math.floor(
-
-difference /
-
-(1000 * 60 * 60 * 24)
-
+(now-start)
+/(1000*60*60*24)
 );
-
 
 
 
@@ -443,12 +331,17 @@ const counter =
 document.getElementById("days-count");
 
 
-
 if(counter){
-
 
 counter.innerText =
 days;
 
-
 }
+
+
+
+
+
+// START
+
+loadWebsite();
