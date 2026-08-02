@@ -2403,3 +2403,60 @@ footer p {
 
 
 }
+
+/* =========================
+   STORY MEDIA FINAL FIX
+========================= */
+
+.story-item img,
+.story-item video {
+
+    width:100%;
+    max-width:100%;
+
+    height:auto;
+
+    max-height:500px;
+
+    object-fit:contain;
+
+    border-radius:25px;
+
+    background:#000;
+
+    display:block;
+
+}
+
+
+.story-item img {
+
+    background:none;
+
+}
+
+
+/* Video control */
+
+.story-item video {
+
+    aspect-ratio:16 / 9;
+
+}
+
+
+
+/* Mobile media */
+
+@media(max-width:768px){
+
+    .story-item img,
+    .story-item video {
+
+        max-height:350px;
+
+        border-radius:20px;
+
+    }
+
+}
