@@ -3063,3 +3063,130 @@ footer p {
 
 
 }
+
+/* =========================
+   FINAL MOBILE POLISH
+========================= */
+
+@media(max-width:768px){
+
+
+    nav{
+
+        gap:12px;
+
+        padding:15px;
+
+        flex-wrap:wrap;
+
+    }
+
+
+    nav a{
+
+        font-size:14px;
+
+    }
+
+
+
+    .hero{
+
+        padding:25px 15px;
+
+        min-height:auto;
+
+    }
+
+
+
+    .hero h1{
+
+        font-size:36px;
+
+    }
+
+
+
+    .music-box{
+
+        width:100%;
+
+        max-width:400px;
+
+    }
+
+
+
+    .music-frame iframe{
+
+        height:180px;
+
+    }
+
+
+
+
+    .story-timeline{
+
+        margin:50px auto;
+
+    }
+
+
+
+
+    .story-item{
+
+        width:85% !important;
+
+        left:50px !important;
+
+        padding:20px;
+
+    }
+
+
+
+    .story-item img,
+    .story-item video{
+
+        height:auto;
+
+        max-height:300px;
+
+        object-fit:contain;
+
+    }
+
+
+
+    .story-item h3{
+
+        font-size:22px;
+
+    }
+
+
+
+    .promise-card{
+
+        width:90%;
+
+        padding:30px 20px;
+
+    }
+
+
+
+    footer{
+
+        padding:40px 20px;
+
+        text-align:center;
+
+    }
+
+
+
+}
