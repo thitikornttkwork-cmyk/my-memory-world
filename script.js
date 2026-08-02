@@ -216,3 +216,31 @@ fetch(API_URL + "?sheet=Relationship")
     console.error("Relationship Error:", err);
 
 });
+
+// =======================
+// ANNIVERSARY COUNTER
+// =======================
+
+const startDate = new Date("2026-04-28");
+
+
+const today = new Date();
+
+
+const difference = today - startDate;
+
+
+const days = Math.floor(
+    difference / (1000 * 60 * 60 * 24)
+);
+
+
+const counter =
+document.getElementById("days-count");
+
+
+if(counter){
+
+    counter.innerText = days;
+
+}
