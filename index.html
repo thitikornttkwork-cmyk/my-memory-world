@@ -1,743 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>My Memory World ❤️ THUM & PHUNG</title>
 
-    <meta charset="UTF-8">
+  <meta
+    name="description"
+    content="Our beautiful love story, memories, dreams, and promises. Every moment with you becomes a beautiful memory. ❤️"
+  />
+  <meta
+    name="keywords"
+    content="love story, memories, couple, wedding, THUM, PHUNG"
+  />
+  <meta name="author" content="THUM & PHUNG" />
 
+  <meta property="og:title" content="My Memory World ❤️ THUM & PHUNG" />
+  <meta
+    property="og:description"
+    content="Every moment with you becomes a beautiful memory."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://my-memory-world.vercel.app/" />
+  <meta
+    property="og:image"
+    content="https://my-memory-world.vercel.app/My%20Memory%20World/story1.jpg"
+  />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffb6c1" />
 
+  <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>"
+  />
 
-
-    <title>
-        My Memory World ❤️ THUM & PHUNG
-    </title>
-
-
-
-
-    <meta name="description"
-    content="Our beautiful love story, memories, dreams, and promises. Every moment with you becomes a beautiful memory. ❤️">
-
-
-
-    <meta name="keywords"
-    content="love story, memories, couple, wedding, THUM, PHUNG">
-
-
-
-    <meta name="author"
-    content="THUM & PHUNG">
-
-
-
-
-
-    <!-- Open Graph Preview -->
-
-
-    <meta property="og:title"
-    content="My Memory World ❤️ THUM & PHUNG">
-
-
-
-    <meta property="og:description"
-    content="Every moment with you becomes a beautiful memory.">
-
-
-
-    <meta property="og:type"
-    content="website">
-
-
-
-    <meta property="og:url"
-    content="https://my-memory-world.vercel.app/">
-
-
-
-    <meta property="og:image"
-    content="https://my-memory-world.vercel.app/My%20Memory%20World/story1.jpg">
-
-
-
-
-
-    <!-- Mobile Theme -->
-
-
-    <meta name="theme-color"
-    content="#ffb6c1">
-
-
-
-
-
-    <!-- Favicon -->
-
-
-    <link rel="icon"
-    href="data:image/svg+xml,
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-    <text y='.9em' font-size='90'>❤️</text>
-    </svg>">
-
-
-
-
-
-    <link rel="stylesheet" href="style.css">
-
-
+  <link rel="preload" as="image" href="My Memory World/story1.jpg" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-
-
-
 <body>
+  <!-- Loader -->
+  <div class="page-loader" id="page-loader">
+    <div class="loader-heart">❤️</div>
+    <p>Loading our memories...</p>
+  </div>
 
+  <!-- Floating Heart -->
+  <div class="floating-heart" aria-hidden="true">❤️</div>
 
+  <!-- Navigation -->
+  <nav aria-label="Main navigation">
+    <a href="#home">🏠 Home</a>
+    <a href="#story">💕 Story</a>
+    <a href="#memories">📸 Memories</a>
+    <a href="#dreams">✨ Dreams</a>
+    <a href="#promise">💍 Promise</a>
+  </nav>
 
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <h1>❤️ My Memory World</h1>
 
-    <!-- Page Loader -->
+    <h2 id="couple-name">THUM & PHUNG</h2>
+    <p id="together-since">Together since 28 April 2026</p>
 
-
-    <div class="page-loader">
-
-
-        <div class="loader-heart">
-
-            ❤️
-
-        </div>
-
-
-
-        <p>
-
-            Loading our memories...
-
-        </p>
-
-
+    <div class="counter" aria-live="polite">
+      ❤️ Together for <span id="days-count">0</span> days
     </div>
 
+    <p class="love-text">
+      “Every moment with you becomes a beautiful memory.”
+    </p>
 
+    <div class="music-box">
+      <div class="music-icon">🎵</div>
 
+      <h3>Our Song</h3>
 
+      <p>A song that reminds us of our memories.</p>
 
-
-
-    <!-- Floating Heart -->
-
-
-    <div class="floating-heart">
-
-        ❤️
-
+      <div class="music-frame">
+        <iframe
+          id="song-link"
+          width="100%"
+          height="200"
+          src=""
+          loading="lazy"
+          title="Our Song"
+          allow="autoplay; encrypted-media"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+      </div>
     </div>
+  </header>
 
-
-
-
-
-
-
-    <!-- Navigation -->
-
-
-    <nav>
-
-
-        <a href="#home">
-            🏠 Home
-        </a>
-
-
-        <a href="#story">
-            💕 Story
-        </a>
-
-
-        <a href="#memories">
-            📸 Memories
-        </a>
-
-
-        <a href="#dreams">
-            ✨ Dreams
-        </a>
-
-
-        <a href="#promise">
-            💍 Promise
-        </a>
-
-
-    </nav>
-
-
-
-
-
-
-
-    <!-- Hero -->
-
-
-    <header class="hero" id="home">
-
-
-
-        <h1>
-            ❤️ My Memory World
-        </h1>
-
-
-
-        <h2 id="couple-name"></h2>
-
-
-
-        <p id="together-since"></p>
-
-
-
-
-
-        <div class="counter">
-
-
-            ❤️ Together for
-
-
-            <span id="days-count"></span>
-
-
-            days
-
-
-
-        </div>
-
-
-
-
-
-
-        <p class="love-text">
-
-
-            "Every moment with you becomes a beautiful memory."
-
-
-        </p>
-
-
-
-
-
-
-
-
-        <!-- Music -->
-
-
-        <div class="music-box">
-
-
-            <div class="music-icon">
-
-                🎵
-
-            </div>
-
-
-
-            <h3>
-
-                Our Song
-
-            </h3>
-
-
-
-            <p>
-
-                A song that reminds us of our memories.
-
-            </p>
-
-
-
-
-            <div class="music-frame">
-
-
-                <iframe
-
-
-                    id="song-link"
-
-
-                    width="100%"
-
-
-                    height="200"
-
-
-                    src=""
-
-
-                    loading="lazy"
-
-
-                    title="Our Song"
-
-
-                    allow="autoplay">
-
-
-                </iframe>
-
-
-            </div>
-
-
-        </div>
-
-
-
-    </header>
-
-
-
-
-
-
-
-
-
-    <!-- Story -->
-
-
+  <!-- Story -->
+  <main>
     <section class="about" id="story">
-
-
-        <h2>
-
-            💕 Our Story
-
-        </h2>
-
-
-
-
-        <div class="story-timeline">
-
-
-
-            <div class="story-item">
-
-
-                <img
-
-                    src="My Memory World/story1.jpg"
-
-                    alt="Our first memory"
-
-                    loading="lazy"
-
-                    decoding="async"
-
-                >
-
-
-
-                <span>
-
-                    28/04/2026
-
-                </span>
-
-
-
-
-                <h3>
-
-                    ❤️ Where Our Story Began
-
-                </h3>
-
-
-
-
-                <p>
-
-                    The day our beautiful journey began. A simple moment that
-                    became the first page of our story together.
-
-                </p>
-
-
-            </div>
-
-
-
-
-
-
-
-
-
-            <div class="story-item">
-
-
-
-                <video
-
-
-                    controls
-
-
-                    muted
-
-
-                    loop
-
-
-                    preload="metadata"
-
-
-                    playsinline
-
-
-
-                >
-
-
-                    <source
-
-                        src="My Memory World/story2.mp4"
-
-                        type="video/mp4"
-
-                    >
-
-
-
-                    Your browser does not support video.
-
-
-                </video>
-
-
-
-
-
-                <span>
-
-                    Every Day
-
-                </span>
-
-
-
-
-                <h3>
-
-                    📸 Making Memories
-
-                </h3>
-
-
-
-
-                <p>
-
-                    Every smile, every adventure, and every little moment
-                    becomes another beautiful page in our story.
-
-                </p>
-
-
-
-            </div>
-
-
-
-
-
-
-
-
-
-            <div class="story-item">
-
-
-                <img
-
-
-                    src="My Memory World/story3.jpg"
-
-
-                    alt="Our future story"
-
-
-                    loading="lazy"
-
-
-                    decoding="async"
-
-
-                >
-
-
-
-                <span>
-
-                    Always
-
-                </span>
-
-
-
-
-                <h3>
-
-                    ✨ Our Story Continues
-
-                </h3>
-
-
-
-
-                <p>
-
-                    Our journey is still being written, one beautiful memory at
-                    a time, with many more chapters waiting ahead.
-
-                </p>
-
-
-
-
-            </div>
-
-
-
-
-
-        </div>
-
-
+      <h2>💕 Our Story</h2>
+
+      <div class="story-timeline">
+        <article class="story-item">
+          <img
+            src="My Memory World/story1.jpg"
+            alt="The day our story began"
+            loading="eager"
+            decoding="async"
+          />
+
+          <span>28/04/2026</span>
+
+          <h3>❤️ Where Our Story Began</h3>
+
+          <p>
+            The day our beautiful journey began. A simple moment that became the
+            first page of our story together.
+          </p>
+        </article>
+
+        <article class="story-item">
+          <video controls muted loop preload="metadata" playsinline>
+            <source src="My Memory World/story2.mp4" type="video/mp4" />
+            Your browser does not support video.
+          </video>
+
+          <span>Every Day</span>
+
+          <h3>📸 Making Memories</h3>
+
+          <p>
+            Every smile, every adventure, and every little moment becomes
+            another beautiful page in our story.
+          </p>
+        </article>
+
+        <article class="story-item">
+          <img
+            src="My Memory World/story3.jpg"
+            alt="Our future together"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <span>Always</span>
+
+          <h3>✨ Our Story Continues</h3>
+
+          <p>
+            Our journey is still being written, one beautiful memory at a time,
+            with many more chapters waiting ahead.
+          </p>
+        </article>
+      </div>
     </section>
-
-
-
-
-
-
-
-
 
     <!-- Memories -->
-
-
     <section id="memories">
+      <h2>📸 Memories</h2>
 
-
-        <h2>
-
-            📸 Memories
-
-        </h2>
-
-
-
-
-        <div
-
-            id="memory-container"
-
-            class="timeline">
-
-        </div>
-
-
-
+      <div id="memory-container" class="timeline"></div>
     </section>
-
-
-
-
-
-
-
-
 
     <!-- Bucket List -->
-
-
     <section id="dreams">
+      <h2>✨ Bucket List</h2>
 
-
-        <h2>
-
-            ✨ Bucket List
-
-        </h2>
-
-
-
-
-        <div
-
-            id="bucket-container"
-
-            class="dream-container">
-
-        </div>
-
-
-
+      <div id="bucket-container" class="dream-container"></div>
     </section>
-
-
-
-
-
-
-
-
 
     <!-- Promise -->
-
-
     <section class="promise" id="promise">
+      <h2>💍 Our Promise</h2>
 
+      <div class="promise-card">
+        <div class="promise-ring">💍</div>
 
-        <h2>
+        <h3>Our Story Will Continue</h3>
 
-            💍 Our Promise
+        <p>Every moment with you is a memory I want to keep forever.</p>
 
-        </h2>
-
-
-
-
-        <div class="promise-card">
-
-
-            <div class="promise-ring">
-
-                💍
-
-            </div>
-
-
-
-
-            <h3>
-
-                Our Story Will Continue
-
-            </h3>
-
-
-
-
-            <p>
-
-                Every moment with you is a memory
-                I want to keep forever.
-
-            </p>
-
-
-
-
-            <span>
-
-                ❤️ 28/04/2026 ❤️
-
-            </span>
-
-
-
-        </div>
-
-
+        <span>❤️ 28/04/2026 ❤️</span>
+      </div>
     </section>
+  </main>
 
+  <!-- Footer -->
+  <footer>
+    <div class="footer-heart">❤️</div>
 
+    <h3>THUM & PHUNG</h3>
 
+    <p>Our story is forever written in every little moment.</p>
 
+    <p class="footer-year">Made with love • 2026</p>
+  </footer>
 
-
-
-
-
-    <!-- Footer -->
-
-
-    <footer>
-
-
-        <div class="footer-heart">
-
-            ❤️
-
-        </div>
-
-
-
-
-        <h3>
-
-            THUM & PHUNG
-
-        </h3>
-
-
-
-
-        <p>
-
-            Our story is forever written
-            in every little moment.
-
-        </p>
-
-
-
-
-        <p class="footer-year">
-
-            Made with love • 2026
-
-        </p>
-
-
-
-    </footer>
-
-
-
-
-
-
-
-
-
-    <script src="script.js"></script>
-
-
-
+  <script src="script.js" defer></script>
 </body>
-
-
 </html>

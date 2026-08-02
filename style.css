@@ -1,3333 +1,901 @@
-/* =========================
-   GLOBAL
-========================= */
-
-* {
-    box-sizing: border-box;
-}
-
-
-body {
-
-    margin:0;
-
-    font-family:
-    "Segoe UI",
-    sans-serif;
-
-    background:
-    linear-gradient(
-        135deg,
-        #fff8f0,
-        #fff
-    );
-
-    color:#444;
-
-}
-
-
+/* ==========================================================
+My Memory World - Refactored CSS
+Part 1 / 3
+(Copy this first, then continue with Part 2 and Part 3)
+========================================================== */
 
 /* =========================
-   NAVIGATION
+ROOT
 ========================= */
 
-nav {
-
-    position:sticky;
-
-    top:0;
-
-    z-index:100;
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:25px;
-
-    padding:20px;
-
-    background:
-    rgba(255,255,255,.8);
-
-    backdrop-filter:blur(10px);
-
+:root{
+--bg:#fff8f0;
+--bg-soft:#fff5f7;
+--surface:#ffffff;
+--surface-soft:#fff8ef;
+--gold:#d4af37;
+--gold-dark:#8b6b23;
+--gold-light:#f7e7a9;
+--text:#444;
+--muted:#777;
+--shadow:0 15px 35px rgba(0,0,0,.12);
+--shadow-soft:0 10px 30px rgba(0,0,0,.10);
+--shadow-gold:0 25px 50px rgba(212,175,55,.25);
+--radius:25px;
+--radius-lg:30px;
 }
-
-
-
-nav a {
-
-    text-decoration:none;
-
-    color:#8b6b23;
-
-    font-weight:bold;
-
-}
-
-
-
-
 
 /* =========================
-   HERO
+RESET
 ========================= */
 
-.hero {
-
-    min-height:100vh;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
-
-    padding:40px;
-
+*{
+box-sizing:border-box;
 }
 
-
-
-.hero h1 {
-
-    font-size:50px;
-
-    color:#b8860b;
-
+html{
+scroll-behavior:smooth;
 }
 
-
-
-
-
-.counter {
-
-    margin:20px;
-
-    padding:15px 30px;
-
-    border-radius:50px;
-
-    background:white;
-
-    box-shadow:
-
-    0 10px 30px rgba(0,0,0,.1);
-
+html,
+body{
+margin:0;
+padding:0;
+overflow-x:hidden;
 }
 
-
-
-
-
-
+body{
+font-family:"Segoe UI",sans-serif;
+color:var(--text);
+background:
+radial-gradient(circle at top, rgba(255,220,230,.8), transparent 40%),
+linear-gradient(135deg,var(--bg),#fff);
+line-height:1.7;
+}
 
 /* =========================
-   SECTION
+LOADER
 ========================= */
 
-section {
-
-    padding:80px 20px;
-
+.page-loader{
+position:fixed;
+inset:0;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:16px;
+background:#fff;
+z-index:9999;
+transition:opacity .5s ease;
 }
 
-
-
-section h2 {
-
-    text-align:center;
-
-    font-size:40px;
-
-    color:#8b6b23;
-
+.loader-heart{
+font-size:54px;
+animation:heartbeat 1.5s infinite;
 }
 
-
-
-
-
-
+.page-loader p{
+color:var(--gold-dark);
+font-weight:600;
+}
 
 /* =========================
-   LUXURY STORY TIMELINE
+NAVIGATION
 ========================= */
 
-
-.story-timeline {
-
-    position:relative;
-
-    max-width:1000px;
-
-    margin:80px auto;
-
+nav{
+position:sticky;
+top:0;
+z-index:100;
+display:flex;
+justify-content:center;
+gap:24px;
+padding:18px 20px;
+background:rgba(255,255,255,.82);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(212,175,55,.2);
 }
 
-
-
-
-
-/* Middle line */
-
-.story-timeline::before {
-
-    content:"";
-
-    position:absolute;
-
-    width:3px;
-
-    background:
-
-    linear-gradient(
-        to bottom,
-        transparent,
-        #d4af37,
-        transparent
-    );
-
-
-    top:0;
-
-    bottom:0;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
+nav a{
+position:relative;
+text-decoration:none;
+color:var(--gold-dark);
+font-weight:700;
+padding:8px 4px;
+transition:color .3s ease;
 }
 
-
-
-
-
-/* Story Card */
-
-.story-item {
-
-
-    position:relative;
-
-
-    width:45%;
-
-
-    padding:30px;
-
-
-    margin-bottom:80px;
-
-
-    background:white;
-
-
-    border-radius:25px;
-
-
-    box-shadow:
-
-
-    0 15px 35px rgba(0,0,0,.12);
-
-
-    transition:.4s;
-
-
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-8px;
+width:0;
+height:3px;
+border-radius:999px;
+background:linear-gradient(90deg,var(--gold),var(--gold-light));
+transition:width .35s ease;
 }
 
+nav a:hover
 
+nav a:hover::after{
+width:100%;
+}
 
+/* =========================
+HERO
+========================= */
 
+.hero{
+position:relative;
+overflow:hidden;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:48px 20px;
+}
 
-/* Left */
+.hero h1{
+margin:0;
+font-size:clamp(2.4rem,5vw,3.8rem);
+color:#b8860b;
+letter-spacing:2px;
+animation:titleGlow 3s ease-in-out infinite alternate;
+}
+
+#couple-name{
+margin:18px 0 8px;
+font-size:clamp(2rem,4vw,2.8rem);
+color:var(--gold-dark);
+font-family:Georgia,serif;
+animation:fadeUp 1s ease both;
+}
+
+#together-since{
+color:#b8860b;
+font-size:1.1rem;
+letter-spacing:1px;
+}
+
+.love-text{
+max-width:680px;
+margin:28px auto;
+font-size:1.2rem;
+font-style:italic;
+color:var(--gold-dark);
+}
+
+.counter{
+margin:22px 0;
+padding:16px 28px;
+border-radius:999px;
+background:linear-gradient(145deg,#fff,#fff8e7);
+border:1px solid rgba(212,175,55,.28);
+box-shadow:0 20px 50px rgba(212,175,55,.15);
+backdrop-filter:blur(10px);
+color:var(--gold-dark);
+font-size:1.1rem;
+}
+
+#days-count{
+display:inline-block;
+margin:0 8px;
+font-size:2.6rem;
+font-weight:800;
+color:#b8860b;
+animation:countGlow 2s infinite;
+}
+
+/* =========================
+MUSIC BOX
+========================= */
+
+.music-box{
+width:min(100%,640px);
+margin-top:32px;
+padding:28px;
+border-radius:var(--radius-lg);
+background:rgba(255,255,255,.68);
+backdrop-filter:blur(15px);
+border:1px solid rgba(212,175,55,.25);
+box-shadow:0 20px 50px rgba(0,0,0,.12);
+transition:transform .35s ease, box-shadow .35s ease;
+}
+
+.music-box:hover{
+transform:translateY(-8px);
+box-shadow:0 30px 70px rgba(212,175,55,.25);
+}
+
+.music-box h3{
+margin:10px 0 8px;
+color:var(--gold-dark);
+font-size:1.7rem;
+letter-spacing:1px;
+}
+
+.music-box p{
+color:#666;
+margin:0 0 20px;
+}
+
+.music-frame iframe{
+width:100%;
+height:200px;
+border:none;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+/* =========================
+SECTION
+========================= */
+
+section{
+padding:80px 20px;
+}
+
+section h2{
+margin:0 0 20px;
+text-align:center;
+font-size:clamp(2rem,4vw,2.8rem);
+color:var(--gold-dark);
+}
+
+/* =========================
+ANIMATIONS
+========================= */
+
+@keyframes titleGlow{
+from{
+text-shadow:0 0 10px rgba(212,175,55,.2);
+}
+to{
+text-shadow:0 0 30px rgba(212,175,55,.7);
+}
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(24px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes countGlow{
+0%,100%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.08);
+}
+}
+
+@keyframes heartbeat{
+0%,100%{
+transform:scale(1);
+}
+50%{
+transform:scale(1.15);
+}
+}
+
+/* ==========================================================
+My Memory World - Refactored CSS
+Part 2 / 3
+(Paste directly after Part 1)
+========================================================== */
+
+/* =========================
+STORY TIMELINE
+========================= */
+
+.story-timeline{
+position:relative;
+max-width:1000px;
+margin:80px auto;
+}
+
+.story-timeline::before{
+content:"";
+position:absolute;
+top:0;
+bottom:0;
+left:50%;
+transform:translateX(-50%);
+width:3px;
+background:linear-gradient(to bottom,transparent,var(--gold),transparent);
+}
+
+.story-item{
+position:relative;
+width:45%;
+padding:30px;
+margin-bottom:80px;
+background:var(--surface);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
+transition:transform .4s ease, box-shadow .4s ease;
+opacity:0;
+transform:translateY(40px);
+}
+
+.story-item.show{
+opacity:1;
+transform:translateY(0);
+}
 
 .story-item:nth-child(odd){
-
-    left:0;
-
+left:0;
 }
-
-
-
-
-/* Right */
 
 .story-item:nth-child(even){
-
-    left:55%;
-
+left:55%;
 }
 
-
-
-
-
-
-
-/* Timeline Icon */
-
-.story-item::before {
-
-
-    content:"❤";
-
-
-    position:absolute;
-
-
-    width:55px;
-
-
-    height:55px;
-
-
-
-    display:flex;
-
-
-    align-items:center;
-
-
-    justify-content:center;
-
-
-
-    border-radius:50%;
-
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        white,
-        #f5d88a
-    );
-
-
-
-    color:#b8860b;
-
-
-
-    right:-82px;
-
-
-
-    top:35px;
-
-
-
-    box-shadow:
-
-
-    0 0 0 6px rgba(212,175,55,.15);
-
-
+.story-item::before{
+content:"❤";
+position:absolute;
+top:35px;
+width:55px;
+height:55px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:linear-gradient(145deg,#fff,#f5d88a);
+color:#b8860b;
+box-shadow:0 0 0 6px rgba(212,175,55,.15);
 }
 
-
-
-
-
+.story-item:nth-child(odd)::before{
+right:-82px;
+}
 
 .story-item:nth-child(even)::before{
-
-
-    left:-82px;
-
-
+left:-82px;
 }
 
-
-
-
-
-
-
-/* Hover */
-
-.story-item:hover {
-
-
-    transform:
-
-    translateY(-12px);
-
-
-
-    box-shadow:
-
-
-    0 25px 50px rgba(212,175,55,.25);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================
-   STORY MEDIA
-   IMAGE + VIDEO
-========================= */
-
-
-.story-item img,
-.story-item video {
-
-
-    width:100%;
-
-
-    height:auto;
-
-
-    max-height:500px;
-
-
-    object-fit:contain;
-
-
-    border-radius:20px;
-
-
-    margin-bottom:20px;
-
-
-    display:block;
-
-
-}
-
-
-
-
-
-.story-item video {
-
-
-    background:#000;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* Date */
-
-
-.story-item span {
-
-
-    display:inline-block;
-
-
-    color:#b8860b;
-
-
-    font-weight:bold;
-
-
-    margin-bottom:15px;
-
-
-}
-
-
-
-
-
-
-
-/* Title */
-
-
-.story-item h3 {
-
-
-    color:#8b6b23;
-
-
-    font-size:26px;
-
-
-}
-
-
-
-
-
-
-
-/* Text */
-
-
-.story-item p {
-
-
-    line-height:1.8;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =========================
-   MEMORY CARD
-========================= */
-
-
-.card {
-
-
-    background:white;
-
-
-    padding:25px;
-
-
-    border-radius:25px;
-
-
-    margin:25px auto;
-
-
-    max-width:700px;
-
-
-    box-shadow:
-
-
-    0 15px 30px rgba(0,0,0,.1);
-
-
-
-}
-
-
-
-
-
-
-.memory-image {
-
-
-    width:100%;
-
-
-    border-radius:20px;
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-/* =========================
-   MOBILE
-========================= */
-
-
-@media(max-width:768px){
-
-
-
-    .story-timeline::before{
-
-
-        left:25px;
-
-
-    }
-
-
-
-
-
-    .story-item,
-
-
-    .story-item:nth-child(even),
-
-
-    .story-item:nth-child(odd){
-
-
-
-        width:80%;
-
-
-        left:60px;
-
-
-    }
-
-
-
-
-
-
-
-    .story-item::before,
-
-
-    .story-item:nth-child(even)::before{
-
-
-
-        left:-60px;
-
-
-        right:auto;
-
-
-
-    }
-
-
-
-
-
-    .hero h1{
-
-
-
-        font-size:35px;
-
-
-    }
-
-
-
-
-
+.story-item:hover{
+transform:translateY(-12px);
+box-shadow:var(--shadow-gold);
 }
 
 .story-item img,
-.story-item video {
-
-    transition:
-    transform .5s ease,
-    box-shadow .5s ease;
-
+.story-item video{
+width:100%;
+max-width:100%;
+height:auto;
+max-height:500px;
+object-fit:contain;
+display:block;
+border-radius:22px;
+margin-bottom:20px;
+transition:transform .5s ease, box-shadow .5s ease;
 }
-
 
 .story-item img:hover,
-.story-item video:hover {
+.story-item video:hover{
+transform:scale(1.03);
+box-shadow:0 20px 40px rgba(212,175,55,.35);
+}
 
-    transform:
-    scale(1.03);
+.story-item video{
+aspect-ratio:16/9;
+background:#000;
+}
 
+.story-item span{
+display:inline-block;
+margin-bottom:14px;
+color:#b8860b;
+font-weight:700;
+}
 
-    box-shadow:
+.story-item h3{
+margin:0 0 12px;
+color:var(--gold-dark);
+font-size:1.6rem;
+}
 
-    0 20px 40px rgba(212,175,55,.35);
-
+.story-item p{
+margin:0;
+line-height:1.8;
 }
 
 /* =========================
-   STORY ENTER ANIMATION
+MEMORY GRID
 ========================= */
 
-
-.story-item {
-
-    opacity:0;
-
-    animation:
-    storyFade 1s ease forwards;
-
+#memory-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:32px;
+max-width:1200px;
+margin:0 auto;
 }
 
-
-
-.story-item:nth-child(1){
-
-    animation-delay:.2s;
-
+.card{
+background:var(--surface);
+border-radius:var(--radius);
+box-shadow:var(--shadow-soft);
 }
 
-
-.story-item:nth-child(2){
-
-    animation-delay:.5s;
-
+.memory-card{
+position:relative;
+overflow:hidden;
+padding:0;
+background:linear-gradient(145deg,#fff,var(--surface-soft));
+transition:transform .4s ease, box-shadow .4s ease;
 }
 
-
-.story-item:nth-child(3){
-
-    animation-delay:.8s;
-
+.memory-card:hover{
+transform:translateY(-12px) scale(1.02);
+box-shadow:var(--shadow-gold);
 }
 
+.memory-image{
+width:100%;
+height:280px;
+object-fit:cover;
+display:block;
+border-radius:25px 25px 0 0;
+transition:transform .5s ease;
+}
 
+.memory-card:hover .memory-image{
+transform:scale(1.08);
+}
 
-@keyframes storyFade {
+.memory-card h3{
+margin:0;
+padding:20px 24px 10px;
+color:var(--gold-dark);
+font-size:1.45rem;
+}
 
+.memory-card p{
+margin:0;
+padding:0 24px 14px;
+line-height:1.75;
+}
 
-    from {
+.memory-card p:last-child{
+padding-bottom:24px;
+}
 
-        opacity:0;
-
-        transform:
-        translateY(50px);
-
-    }
-
-
-
-    to {
-
-        opacity:1;
-
-        transform:
-        translateY(0);
-
-    }
-
-
+.favorite-badge{
+position:absolute;
+top:18px;
+right:18px;
+z-index:2;
+padding:8px 14px;
+border-radius:999px;
+background:linear-gradient(135deg,#ffd700,#fff0a8);
+color:var(--gold-dark);
+font-weight:700;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
 
 /* =========================
-   MEMORY PREMIUM HOVER
+DREAM / BUCKET LIST
 ========================= */
 
-
-.memory-card {
-
-    transition:
-
-    transform .4s ease,
-    box-shadow .4s ease;
-
+.dream-container{
+max-width:900px;
+margin:0 auto;
 }
 
-
-
-.memory-card:hover {
-
-
-    transform:
-
-    translateY(-10px);
-
-
-    box-shadow:
-
-
-    0 25px 50px rgba(212,175,55,.25);
-
-
+.dream-card{
+position:relative;
+overflow:hidden;
+padding:26px;
+margin:24px auto;
+border-radius:var(--radius);
+background:linear-gradient(145deg,#fff,var(--surface-soft));
+box-shadow:var(--shadow);
+transition:transform .35s ease, box-shadow .35s ease;
 }
 
-
-
-.memory-card img {
-
-
-    transition:
-
-    transform .5s ease;
-
-
+.dream-card:hover{
+transform:translateY(-10px);
+box-shadow:var(--shadow-gold);
 }
 
+.dream-card::before{
+content:"✨";
+position:absolute;
+top:16px;
+right:18px;
+font-size:2rem;
+opacity:.35;
+}
 
+.dream-card h3{
+margin:0 0 10px;
+color:var(--gold-dark);
+font-size:1.5rem;
+}
 
-.memory-card:hover img {
-
-
-    transform:
-
-    scale(1.03);
-
-
+.dream-card p{
+margin:0 0 10px;
+line-height:1.8;
 }
 
 /* =========================
-   PREMIUM MEMORY CARD
+PROMISE
 ========================= */
 
+.promise{
+text-align:center;
+background:radial-gradient(circle, rgba(255,230,240,.7), transparent 60%);
+}
 
-.memory-card {
+.promise-card{
+max-width:620px;
+margin:48px auto 0;
+padding:50px 40px;
+border-radius:35px;
+background:linear-gradient(145deg,#fff,var(--surface-soft));
+box-shadow:0 25px 60px rgba(0,0,0,.12);
+transition:transform .4s ease, box-shadow .4s ease;
+}
 
-    overflow:hidden;
+.promise-card:hover{
+transform:translateY(-12px);
+box-shadow:0 35px 70px rgba(212,175,55,.3);
+}
 
-    padding:0;
+.promise-ring{
+font-size:72px;
+animation:ringFloat 3s ease-in-out infinite;
+}
 
+.promise-card h3{
+margin:20px 0 12px;
+color:var(--gold-dark);
+font-size:2rem;
+}
+
+.promise-card p{
+margin:0;
+color:#555;
+font-size:1.08rem;
+line-height:1.9;
+}
+
+.promise-card span{
+display:inline-block;
+margin-top:26px;
+padding:10px 24px;
+border-radius:999px;
+background:#fff0c8;
+color:var(--gold-dark);
+font-weight:700;
+}
+
+@keyframes ringFloat{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-14px);
+}
 }
 
 
+/* ==========================================================
+My Memory World - Refactored CSS
+Part 3 / 3
+(Paste directly after Part 2)
+========================================================== */
 
-.memory-card .memory-image {
+/* =========================
+FOOTER
+========================= */
 
-
-    width:100%;
-
-    height:350px;
-
-    object-fit:cover;
-
-
-    border-radius:
-
-    25px 25px 0 0;
-
-
+footer{
+position:relative;
+text-align:center;
+padding:70px 20px;
+margin-top:80px;
+background:linear-gradient(135deg,var(--bg),#ffffff);
+border-top:1px solid rgba(212,175,55,.25);
 }
 
-
-
-.memory-card h3 {
-
-
-    padding:20px 25px 10px;
-
-
-    color:#8b6b23;
-
-
-    font-size:26px;
-
-
+footer::before{
+content:"";
+position:absolute;
+top:0;
+left:50%;
+transform:translateX(-50%);
+width:120px;
+height:3px;
+background:linear-gradient(90deg,transparent,var(--gold),transparent);
 }
 
-
-
-.memory-card p {
-
-
-    padding:
-
-    0 25px;
-
-
+.footer-heart{
+font-size:42px;
+animation:heartbeat 2s infinite;
 }
 
+footer h3{
+margin:18px 0 10px;
+color:var(--gold-dark);
+font-size:1.9rem;
+letter-spacing:3px;
+font-family:Georgia,serif;
+}
 
+footer p{
+margin:0 0 8px;
+color:var(--muted);
+line-height:1.8;
+}
 
-.memory-card p:last-child {
-
-
-    padding-bottom:25px;
-
-
+.footer-year{
+color:#b8860b;
+font-size:.9rem;
 }
 
 /* =========================
-   FAVORITE BADGE
+FLOATING HEART
 ========================= */
 
-
-.memory-card {
-
-    position:relative;
-
+.floating-heart{
+position:fixed;
+right:20px;
+bottom:20px;
+z-index:999;
+font-size:44px;
+pointer-events:none;
+filter:drop-shadow(0 0 15px rgba(255,120,150,.45));
+animation:heartFloat 3s ease-in-out infinite;
 }
 
+@keyframes heartFloat{
+0%,100%{
+transform:translateY(0) scale(1);
+opacity:.85;
+}
+50%{
+transform:translateY(-18px) scale(1.08);
+opacity:1;
+}
+}
 
+.floating-heart-bg{
+position:fixed;
+bottom:-40px;
+z-index:-1;
+opacity:.35;
+pointer-events:none;
+animation:floatHeart linear forwards;
+}
 
-.favorite-badge {
-
-
-    position:absolute;
-
-
-    top:20px;
-
-
-    left:20px;
-
-
-    z-index:2;
-
-
-    padding:
-
-    8px 15px;
-
-
-    border-radius:30px;
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        #fff,
-        #f5d88a
-    );
-
-
-    color:#8b6b23;
-
-
-    font-weight:bold;
-
-
-    box-shadow:
-
-    0 8px 20px rgba(0,0,0,.15);
-
-
+@keyframes floatHeart{
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:0;
+}
+20%{
+opacity:.35;
+}
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
 }
 
 /* =========================
-   DREAM CARD PREMIUM
+SCROLL REVEAL
 ========================= */
 
-
-.dream-container {
-
-
-    max-width:900px;
-
-    margin:auto;
-
+.reveal{
+opacity:0;
+transform:translateY(32px);
+transition:opacity .8s ease, transform .8s ease;
 }
 
-
-
-.dream-container .card {
-
-
-    position:relative;
-
-
-    overflow:hidden;
-
-
-    transition:
-
-    transform .4s ease,
-    box-shadow .4s ease;
-
-
-}
-
-
-
-
-
-.dream-container .card:hover {
-
-
-    transform:
-
-    translateY(-10px);
-
-
-    box-shadow:
-
-    0 25px 50px rgba(212,175,55,.25);
-
-
-}
-
-
-
-
-.dream-container h3 {
-
-
-    color:#8b6b23;
-
-
-    font-size:26px;
-
-
-}
-
-
-
-
-
-.dream-container p {
-
-
-    line-height:1.8;
-
-
-}
-
-
-
-
-
-.dream-container .card::before {
-
-
-    content:"✨";
-
-
-    position:absolute;
-
-
-    right:20px;
-
-
-    top:15px;
-
-
-    font-size:35px;
-
-
-    opacity:.4;
-
-
+.reveal.active{
+opacity:1;
+transform:translateY(0);
 }
 
 /* =========================
-   LUXURY NAVIGATION
+RESPONSIVE
 ========================= */
 
+@media (max-width:768px){
 
-nav {
-
-    border-bottom:
-
-    1px solid rgba(212,175,55,.2);
-
+nav{
+gap:12px;
+padding:14px 12px;
+flex-wrap:wrap;
 }
 
-
-
-nav a {
-
-    position:relative;
-
-    padding:8px 5px;
-
-    transition:
-
-    color .3s ease;
-
+nav a{
+font-size:14px;
 }
 
-
-
-nav a::after {
-
-
-    content:"";
-
-
-    position:absolute;
-
-
-    left:0;
-
-
-    bottom:-8px;
-
-
-    width:0;
-
-
-    height:3px;
-
-
-    background:
-
-    linear-gradient(
-        90deg,
-        #d4af37,
-        #f7e7a9
-    );
-
-
-    border-radius:20px;
-
-
-    transition:
-
-    width .35s ease;
-
-
+.hero{
+min-height:auto;
+padding:36px 18px;
 }
 
-
-
-nav a:hover {
-
-
-    color:#b8860b;
-
-
+.hero h1{
+font-size:2.2rem;
 }
 
-
-
-nav a:hover::after {
-
-
-    width:100%;
-
-
+#couple-name{
+font-size:2rem;
 }
 
-/* =========================
-   HERO PREMIUM EFFECT
-========================= */
-
-
-.hero h1 {
-
-    text-shadow:
-
-    0 10px 30px rgba(212,175,55,.35);
-
-
-    animation:
-
-    titleGlow 3s ease-in-out infinite;
-
+#together-since{
+font-size:1rem;
 }
 
-
-
-@keyframes titleGlow {
-
-
-    0% {
-
-        text-shadow:
-
-        0 0 10px rgba(212,175,55,.2);
-
-    }
-
-
-
-    50% {
-
-        text-shadow:
-
-        0 0 35px rgba(212,175,55,.6);
-
-    }
-
-
-
-    100% {
-
-        text-shadow:
-
-        0 0 10px rgba(212,175,55,.2);
-
-    }
-
-
+.love-text{
+font-size:1.05rem;
+margin:24px auto;
 }
 
-/* =========================
-   LOVE COUNTER PREMIUM
-========================= */
-
-
-.counter {
-
-
-    position:relative;
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.95),
-        rgba(255,248,230,.9)
-    );
-
-
-    border:
-
-    1px solid rgba(212,175,55,.25);
-
-
-
-    box-shadow:
-
-
-    0 20px 50px rgba(212,175,55,.15);
-
-
-
-    backdrop-filter:blur(10px);
-
-
-    font-size:20px;
-
-
-    color:#8b6b23;
-
-
+.counter{
+width:92%;
+font-size:1rem;
+padding:14px 20px;
 }
 
-
-
-#days-count {
-
-
-    display:inline-block;
-
-
-    font-size:45px;
-
-
-    font-weight:bold;
-
-
-    color:#b8860b;
-
-
-    margin:0 8px;
-
-
-    animation:
-
-    countGlow 2s infinite;
-
-
+#days-count{
+font-size:2.1rem;
 }
 
-
-
-@keyframes countGlow {
-
-
-    0% {
-
-
-        transform:scale(1);
-
-
-    }
-
-
-
-    50% {
-
-
-        transform:scale(1.08);
-
-
-    }
-
-
-
-    100% {
-
-
-        transform:scale(1);
-
-
-    }
-
-
+section{
+padding:56px 16px;
 }
 
-/* =========================
-   PREMIUM MUSIC BOX
-========================= */
-
-
-.music-box {
-
-
-    width:90%;
-
-    max-width:700px;
-
-
-    margin-top:40px;
-
-
-    padding:30px;
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.95),
-        rgba(255,248,230,.85)
-    );
-
-
-    border-radius:30px;
-
-
-    border:
-
-    1px solid rgba(212,175,55,.25);
-
-
-    box-shadow:
-
-
-    0 20px 50px rgba(212,175,55,.15);
-
-
-    backdrop-filter:blur(10px);
-
-
+section h2{
+font-size:2rem;
 }
 
-
-
-
-.music-box h3 {
-
-
-    color:#8b6b23;
-
-
-    font-size:28px;
-
-
+.story-timeline{
+margin:56px auto;
 }
 
-
-
-
-
-.music-box p {
-
-
-    color:#666;
-
-
-    margin-bottom:25px;
-
-
+.story-timeline::before{
+left:26px;
+transform:none;
 }
 
-
-
-
-
-.music-box iframe {
-
-
-    border-radius:20px;
-
-
-    box-shadow:
-
-    0 15px 30px rgba(0,0,0,.15);
-
-
+.story-item,
+.story-item:nth-child(odd),
+.story-item:nth-child(even){
+width:calc(100% - 56px);
+left:56px;
+margin-bottom:48px;
+padding:22px;
 }
 
-/* =========================
-   FLOATING HEART EFFECT
-========================= */
-
-
-.floating-heart {
-
-    position:fixed;
-
-    bottom:40px;
-
-    right:40px;
-
-
-    font-size:45px;
-
-
-    z-index:999;
-
-
-    animation:
-
-    floatingHeart 3s ease-in-out infinite;
-
-
-    filter:
-
-    drop-shadow(
-        0 0 15px rgba(255,120,150,.5)
-    );
-
+.story-item::before,
+.story-item:nth-child(odd)::before,
+.story-item:nth-child(even)::before{
+left:-42px;
+right:auto;
+width:44px;
+height:44px;
+top:28px;
 }
-
-
-
-@keyframes floatingHeart {
-
-
-    0% {
-
-
-        transform:
-
-        translateY(0)
-        scale(1);
-
-
-        opacity:.8;
-
-
-    }
-
-
-
-    50% {
-
-
-        transform:
-
-        translateY(-25px)
-        scale(1.15);
-
-
-        opacity:1;
-
-
-    }
-
-
-
-    100% {
-
-
-        transform:
-
-        translateY(0)
-        scale(1);
-
-
-        opacity:.8;
-
-
-    }
-
-
-}
-
-/* =========================
-   FINAL MOBILE POLISH
-========================= */
-
-
-@media(max-width:768px){
-
-
-    nav {
-
-        gap:12px;
-
-        padding:15px 10px;
-
-        flex-wrap:wrap;
-
-    }
-
-
-
-    nav a {
-
-        font-size:14px;
-
-    }
-
-
-
-
-    .hero {
-
-        padding:25px 15px;
-
-    }
-
-
-
-    .hero h1 {
-
-        font-size:32px;
-
-    }
-
-
-
-    section {
-
-        padding:50px 15px;
-
-    }
-
-
-
-    section h2 {
-
-        font-size:32px;
-
-    }
-
-
-
-
-    .story-timeline {
-
-        margin:50px auto;
-
-    }
-
-
-
-    .story-item {
-
-
-        width:85% !important;
-
-
-        padding:20px;
-
-
-        left:45px !important;
-
-
-    }
-
-
-
-    .story-item img,
-    .story-item video {
-
-
-        height:auto;
-
-
-        max-height:350px;
-
-
-        object-fit:contain;
-
-
-        background:#000;
-
-
-    }
-
-
-
-
-    .music-box {
-
-
-        width:100%;
-
-
-        padding:20px;
-
-
-    }
-
-
-
-
-    .music-box iframe {
-
-
-        height:180px;
-
-
-    }
-
-
-
-
-    .counter {
-
-
-        width:90%;
-
-
-        font-size:16px;
-
-
-    }
-
-
-
-
-    #days-count {
-
-
-        font-size:35px;
-
-
-    }
-
-
-
-
-    .floating-heart {
-
-
-        right:20px;
-
-
-        bottom:20px;
-
-
-        font-size:35px;
-
-
-    }
-
-
-
-}
-
-/* =========================
-   PREMIUM FOOTER
-========================= */
-
-
-footer {
-
-    position:relative;
-
-
-    margin-top:80px;
-
-
-    padding:50px 20px;
-
-
-    text-align:center;
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        #fff8f0,
-        #ffffff
-    );
-
-
-    border-top:
-
-    1px solid rgba(212,175,55,.25);
-
-
-}
-
-
-
-footer::before {
-
-
-    content:"";
-
-
-    position:absolute;
-
-
-    top:0;
-
-
-    left:50%;
-
-
-    transform:translateX(-50%);
-
-
-    width:120px;
-
-
-    height:3px;
-
-
-    background:
-
-    linear-gradient(
-        90deg,
-        transparent,
-        #d4af37,
-        transparent
-    );
-
-
-}
-
-
-
-
-footer p:first-child {
-
-
-    color:#8b6b23;
-
-
-    font-size:22px;
-
-
-    font-weight:bold;
-
-
-}
-
-
-
-footer p:last-child {
-
-
-    color:#777;
-
-
-    font-style:italic;
-
-
-}
-
-/* =========================
-   SCROLL REVEAL ANIMATION
-========================= */
-
-
-.reveal {
-
-
-    opacity:0;
-
-
-    transform:
-
-    translateY(40px);
-
-
-    transition:
-
-    all .8s ease;
-
-
-}
-
-
-
-.reveal.active {
-
-
-    opacity:1;
-
-
-    transform:
-
-    translateY(0);
-
-
-}
-
-
-
-
-/* =========================
-   SCROLL ANIMATION FIX
-========================= */
-
-
-/* STORY REVEAL ONLY */
-
-.story-item {
-
-    opacity:0;
-
-    transform:translateY(40px);
-
-    transition:
-    opacity .8s ease,
-    transform .8s ease;
-
-}
-
-
-.story-item.show {
-
-    opacity:1;
-
-    transform:translateY(0);
-
-}
-
-
-
-/* =========================
-   API DATA CARD FIX
-========================= */
-
-
-/* Memories + Bucket List
-   loaded from Google Sheet */
-
-.memory-card,
-.dream-card {
-
-    opacity:1;
-
-    transform:none;
-
-    transition:
-
-    transform .4s ease,
-    box-shadow .4s ease;
-
-}
-
-
-
-.memory-card:hover,
-.dream-card:hover {
-
-    transform:translateY(-10px);
-
-    box-shadow:
-
-    0 25px 50px rgba(212,175,55,.25);
-
-}
-
-/* =========================
-   FLOATING HEART BACKGROUND
-========================= */
-
-
-.floating-heart-bg {
-
-
-    position:fixed;
-
-
-    bottom:-50px;
-
-
-    z-index:-1;
-
-
-    opacity:.35;
-
-
-    pointer-events:none;
-
-
-    animation:
-
-    floatHeart linear forwards;
-
-
-}
-
-
-
-@keyframes floatHeart {
-
-
-    0%{
-
-
-        transform:
-
-        translateY(0)
-        rotate(0deg);
-
-
-        opacity:0;
-
-
-    }
-
-
-
-    20%{
-
-
-        opacity:.35;
-
-
-    }
-
-
-
-
-    100%{
-
-
-        transform:
-
-        translateY(-120vh)
-        rotate(360deg);
-
-
-        opacity:0;
-
-
-    }
-
-
-}
-
-/* =========================
-   SMOOTH SCROLL
-========================= */
-
-
-html {
-
-    scroll-behavior:smooth;
-
-}
-
-
-
-/* =========================
-   NAV PREMIUM EFFECT
-========================= */
-
-
-nav a {
-
-    position:relative;
-
-    transition:.3s;
-
-}
-
-
-
-nav a::after {
-
-
-    content:"";
-
-
-    position:absolute;
-
-
-    left:0;
-
-
-    bottom:-8px;
-
-
-    width:0;
-
-
-    height:2px;
-
-
-    background:#d4af37;
-
-
-    transition:.3s;
-
-
-}
-
-
-
-nav a:hover::after {
-
-
-    width:100%;
-
-
-}
-
-
-
-nav a:hover {
-
-
-    color:#d4af37;
-
-
-}
-
-/* =========================
-   HERO LUXURY POLISH
-========================= */
-
-
-.hero h1 {
-
-
-    animation:
-
-    titleGlow 3s infinite alternate;
-
-
-    letter-spacing:2px;
-
-
-}
-
-
-
-#couple-name {
-
-
-    font-size:42px;
-
-
-    color:#8b6b23;
-
-
-    margin:20px 0;
-
-
-    font-family:
-    "Georgia",
-    serif;
-
-
-    animation:
-
-    fadeUp 1.5s ease;
-
-
-}
-
-
-
-#together-since {
-
-
-    color:#b8860b;
-
-
-    font-size:20px;
-
-
-    letter-spacing:1px;
-
-
-}
-
-
-
-.love-text {
-
-
-    max-width:600px;
-
-
-    font-size:20px;
-
-
-    font-style:italic;
-
-
-    color:#777;
-
-
-    margin:30px;
-
-
-}
-
-
-
-.counter {
-
-
-    border:
-
-    1px solid rgba(212,175,55,.3);
-
-
-    background:
-
-    linear-gradient(
-
-        145deg,
-
-        #fff,
-
-        #fff8e7
-
-    );
-
-
-}
-
-
-
-@keyframes titleGlow {
-
-
-    from {
-
-
-        text-shadow:
-
-        0 0 10px rgba(212,175,55,.2);
-
-
-    }
-
-
-    to {
-
-
-        text-shadow:
-
-        0 0 30px rgba(212,175,55,.6);
-
-
-    }
-
-
-}
-
-
-
-@keyframes fadeUp {
-
-
-    from {
-
-
-        opacity:0;
-
-
-        transform:
-
-        translateY(30px);
-
-
-    }
-
-
-    to {
-
-
-        opacity:1;
-
-
-        transform:
-
-        translateY(0);
-
-
-    }
-
-
-}
-
-/* =========================
-   MUSIC BOX LUXURY STYLE
-========================= */
-
-
-.music-box {
-
-
-    width:90%;
-
-
-    max-width:700px;
-
-
-    margin-top:40px;
-
-
-    padding:30px;
-
-
-    border-radius:30px;
-
-
-
-    background:
-
-    rgba(255,255,255,.65);
-
-
-
-    backdrop-filter:
-
-    blur(15px);
-
-
-
-    border:
-
-    1px solid rgba(212,175,55,.25);
-
-
-
-    box-shadow:
-
-
-    0 20px 50px rgba(0,0,0,.12);
-
-
-
-    transition:.4s;
-
-
-
-}
-
-
-
-.music-box:hover {
-
-
-    transform:
-
-    translateY(-8px);
-
-
-
-    box-shadow:
-
-
-    0 30px 70px rgba(212,175,55,.25);
-
-
-
-}
-
-
-
-
-.music-box h3 {
-
-
-    color:#8b6b23;
-
-
-    font-size:28px;
-
-
-    letter-spacing:1px;
-
-
-}
-
-
-
-.music-box p {
-
-
-    color:#666;
-
-
-    font-size:16px;
-
-
-    line-height:1.8;
-
-
-}
-
-
-
-
-.music-box iframe {
-
-
-    margin-top:20px;
-
-
-    border-radius:20px;
-
-
-    border:none;
-
-
-    box-shadow:
-
-
-    0 10px 30px rgba(0,0,0,.15);
-
-
-
-}
-
-/* =========================
-   HERO OVERFLOW FIX
-========================= */
-
-.hero {
-
-    overflow:hidden;
-
-}
-
-/* =========================
-   WEDDING FOOTER STYLE
-========================= */
-
-
-footer {
-
-
-    text-align:center;
-
-
-    padding:70px 20px;
-
-
-    margin-top:80px;
-
-
-    background:
-
-
-    linear-gradient(
-
-        135deg,
-
-        #fff8f0,
-
-        #ffffff
-
-    );
-
-
-    border-top:
-
-
-    1px solid rgba(212,175,55,.25);
-
-
-}
-
-
-
-.footer-heart {
-
-
-    font-size:40px;
-
-
-    animation:
-
-    heartbeat 2s infinite;
-
-
-}
-
-
-
-footer h3 {
-
-
-    margin:20px 0 10px;
-
-
-    color:#8b6b23;
-
-
-    font-size:30px;
-
-
-    letter-spacing:3px;
-
-
-    font-family:Georgia,serif;
-
-
-}
-
-
-
-footer p {
-
-
-    color:#777;
-
-
-    line-height:1.8;
-
-
-}
-
-
-
-.footer-year {
-
-
-    color:#b8860b;
-
-
-    font-size:14px;
-
-
-}
-
-
-
-@keyframes heartbeat {
-
-
-    0%{
-
-
-        transform:scale(1);
-
-
-    }
-
-
-    50%{
-
-
-        transform:scale(1.15);
-
-
-    }
-
-
-    100%{
-
-
-        transform:scale(1);
-
-
-    }
-
-
-}
-
-/* =========================
-   STORY MEDIA FINAL FIX
-========================= */
 
 .story-item img,
-.story-item video {
-
-    width:100%;
-    max-width:100%;
-
-    height:auto;
-
-    max-height:500px;
-
-    object-fit:contain;
-
-    border-radius:25px;
-
-    background:#000;
-
-    display:block;
-
+.story-item video{
+max-height:320px;
+border-radius:18px;
 }
 
-
-.story-item img {
-
-    background:none;
-
+.story-item h3{
+font-size:1.35rem;
 }
 
-
-/* Video control */
-
-.story-item video {
-
-    aspect-ratio:16 / 9;
-
+#memory-container{
+grid-template-columns:1fr;
+gap:24px;
 }
 
-
-
-/* Mobile media */
-
-@media(max-width:768px){
-
-    .story-item img,
-    .story-item video {
-
-        max-height:350px;
-
-        border-radius:20px;
-
-    }
-
+.memory-image{
+height:240px;
 }
 
-/* =========================
-   HERO ROMANTIC UPGRADE
-========================= */
-
-
-.hero {
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-
-    radial-gradient(
-        circle at top,
-        rgba(255,220,230,.8),
-        transparent 40%
-    ),
-
-    linear-gradient(
-        135deg,
-        #fff5f7,
-        #fff
-    );
-
+.music-box{
+width:100%;
+padding:22px;
 }
 
-
-
-/* Hero title */
-
-.hero h1 {
-
-    animation:
-    titleGlow 3s infinite alternate;
-
+.music-frame iframe{
+height:180px;
 }
 
-
-
-@keyframes titleGlow {
-
-
-    from {
-
-        text-shadow:
-        0 0 10px rgba(212,175,55,.2);
-
-    }
-
-
-    to {
-
-        text-shadow:
-        0 0 30px rgba(212,175,55,.7);
-
-    }
-
+.promise-card{
+width:100%;
+padding:34px 22px;
 }
 
-
-
-
-
-/* Love quote */
-
-.love-text {
-
-
-    font-size:22px;
-
-
-    font-style:italic;
-
-
-    color:#8b6b23;
-
-
-    max-width:600px;
-
-
-    line-height:1.8;
-
-
+.promise-card h3{
+font-size:1.7rem;
 }
 
-
-
-
-
-/* Music box glass */
-
-
-.music-box {
-
-
-    margin-top:30px;
-
-
-    padding:30px;
-
-
-    max-width:600px;
-
-
-    width:100%;
-
-
-    background:
-
-
-    rgba(255,255,255,.65);
-
-
-
-    backdrop-filter:blur(15px);
-
-
-
-    border-radius:30px;
-
-
-
-    box-shadow:
-
-    0 20px 50px rgba(0,0,0,.12);
-
-
-
+footer{
+padding:48px 20px;
 }
 
-
-
-
-
-/* Floating heart animation */
-
-
-.floating-heart {
-
-
-    position:fixed;
-
-
-    bottom:30px;
-
-
-    right:30px;
-
-
-    font-size:45px;
-
-
-    z-index:200;
-
-
-    animation:
-
-    heartFloat 3s infinite ease-in-out;
-
-
+.floating-heart{
+right:16px;
+bottom:16px;
+font-size:36px;
+}
 }
 
+@media (max-width:480px){
 
-
-
-
-@keyframes heartFloat {
-
-
-    0% {
-
-        transform:
-        translateY(0);
-
-    }
-
-
-    50% {
-
-        transform:
-        translateY(-20px);
-
-    }
-
-
-    100% {
-
-        transform:
-        translateY(0);
-
-    }
-
-
+nav{
+gap:10px;
 }
 
+.hero h1{
+font-size:2rem;
+}
 
+#couple-name{
+font-size:1.8rem;
+}
 
+.story-item{
+left:48px;
+width:calc(100% - 48px);
+padding:18px;
+}
 
+.story-item::before{
+left:-38px;
+}
 
-/* Counter premium */
+.story-item img,
+.story-item video{
+max-height:260px;
+}
 
+.counter{
+width:100%;
+}
 
-.counter {
-
-
-    border:
-
-    1px solid rgba(212,175,55,.3);
-
-
-
-    background:
-
-    linear-gradient(
-
-        145deg,
-
-        white,
-
-        #fff8ef
-
-    );
-
-
-
+#days-count{
+font-size:1.9rem;
+}
 }
 
 /* =========================
-   MEMORY ALBUM UPGRADE
+REDUCED MOTION
 ========================= */
 
+@media (prefers-reduced-motion:reduce){
 
-#memory-container {
-
-    display:grid;
-
-    grid-template-columns:
-
-    repeat(auto-fit,minmax(280px,1fr));
-
-    gap:35px;
-
-    max-width:1200px;
-
-    margin:auto;
-
+*,
+*::before,
+*::after{
+animation:none !important;
+transition:none !important;
+scroll-behavior:auto !important;
 }
-
-
-
-
-.memory-card {
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:.5s;
-
-    background:
-
-    linear-gradient(
-
-        145deg,
-
-        #ffffff,
-
-        #fff8ef
-
-    );
-
-}
-
-
-
-
-
-.memory-card:hover {
-
-
-    transform:
-
-    translateY(-15px)
-
-    scale(1.03);
-
-
-
-    box-shadow:
-
-    0 30px 60px rgba(212,175,55,.25);
-
-
-}
-
-
-
-
-
-.memory-image {
-
-
-    width:100%;
-
-
-    height:280px;
-
-
-    object-fit:cover;
-
-
-    border-radius:20px;
-
-
-    transition:.5s;
-
-
-}
-
-
-
-
-
-.memory-card:hover .memory-image {
-
-
-    transform:
-
-    scale(1.08);
-
-
-}
-
-
-
-
-
-.favorite-badge {
-
-
-    position:absolute;
-
-
-    top:20px;
-
-
-    right:20px;
-
-
-    background:
-
-    linear-gradient(
-
-        135deg,
-
-        #ffd700,
-
-        #fff0a8
-
-    );
-
-
-    color:#8b6b23;
-
-
-    padding:8px 15px;
-
-
-    border-radius:30px;
-
-
-    font-weight:bold;
-
-
-    z-index:2;
-
-
-}
-
-
-
-
-
-.memory-card h3 {
-
-
-    color:#8b6b23;
-
-
-    font-size:24px;
-
-
-}
-
-
-
-
-
-.memory-card p {
-
-
-    line-height:1.7;
-
-
 }
 
 /* =========================
-   PROMISE SECTION
+END OF FILE
 ========================= */
-
-
-.promise {
-
-    text-align:center;
-
-    background:
-
-    radial-gradient(
-        circle,
-        rgba(255,230,240,.7),
-        transparent 60%
-    );
-
-}
-
-
-
-
-
-.promise-card {
-
-
-    max-width:600px;
-
-
-    margin:50px auto;
-
-
-    padding:50px 40px;
-
-
-    background:
-
-    linear-gradient(
-
-        145deg,
-
-        white,
-
-        #fff8ef
-
-    );
-
-
-
-    border-radius:35px;
-
-
-
-    box-shadow:
-
-    0 25px 60px rgba(0,0,0,.12);
-
-
-
-    transition:.5s;
-
-
-}
-
-
-
-
-.promise-card:hover {
-
-
-    transform:
-
-    translateY(-15px);
-
-
-
-    box-shadow:
-
-    0 35px 70px rgba(212,175,55,.3);
-
-
-}
-
-
-
-
-
-.promise-ring {
-
-
-    font-size:70px;
-
-
-    animation:
-
-    ringFloat 3s infinite ease-in-out;
-
-
-}
-
-
-
-
-
-@keyframes ringFloat {
-
-
-    0% {
-
-        transform:translateY(0);
-
-    }
-
-
-    50% {
-
-        transform:translateY(-15px);
-
-    }
-
-
-    100% {
-
-        transform:translateY(0);
-
-    }
-
-
-}
-
-
-
-
-
-.promise-card h3 {
-
-
-    font-size:32px;
-
-
-    color:#8b6b23;
-
-
-    margin:20px 0;
-
-
-}
-
-
-
-
-
-.promise-card p {
-
-
-    font-size:18px;
-
-
-    line-height:1.8;
-
-
-    color:#555;
-
-
-}
-
-
-
-
-
-.promise-card span {
-
-
-    display:inline-block;
-
-
-    margin-top:25px;
-
-
-    padding:10px 25px;
-
-
-    border-radius:30px;
-
-
-    color:#8b6b23;
-
-
-    background:#fff0c8;
-
-
-    font-weight:bold;
-
-
-}
-
-/* =========================
-   FINAL MOBILE POLISH
-========================= */
-
-@media(max-width:768px){
-
-
-    nav{
-
-        gap:12px;
-
-        padding:15px;
-
-        flex-wrap:wrap;
-
-    }
-
-
-    nav a{
-
-        font-size:14px;
-
-    }
-
-
-
-    .hero{
-
-        padding:25px 15px;
-
-        min-height:auto;
-
-    }
-
-
-
-    .hero h1{
-
-        font-size:36px;
-
-    }
-
-
-
-    .music-box{
-
-        width:100%;
-
-        max-width:400px;
-
-    }
-
-
-
-    .music-frame iframe{
-
-        height:180px;
-
-    }
-
-
-
-
-    .story-timeline{
-
-        margin:50px auto;
-
-    }
-
-
-
-
-    .story-item{
-
-        width:85% !important;
-
-        left:50px !important;
-
-        padding:20px;
-
-    }
-
-
-
-    .story-item img,
-    .story-item video{
-
-        height:auto;
-
-        max-height:300px;
-
-        object-fit:contain;
-
-    }
-
-
-
-    .story-item h3{
-
-        font-size:22px;
-
-    }
-
-
-
-    .promise-card{
-
-        width:90%;
-
-        padding:30px 20px;
-
-    }
-
-
-
-    footer{
-
-        padding:40px 20px;
-
-        text-align:center;
-
-    }
-
-
-
-}
-
-/* =========================
-   FIX FLOATING HEART OVERFLOW
-========================= */
-
-html,
-body {
-
-    overflow-x:hidden;
-
-}
-
-
-.floating-heart {
-
-    position:fixed;
-
-    right:20px;
-
-    bottom:20px;
-
-    z-index:999;
-
-    animation:floatHeart 3s ease-in-out infinite;
-
-}
-
-
-@keyframes floatHeart {
-
-    0% {
-
-        transform:translateY(0);
-
-    }
-
-
-    50% {
-
-        transform:translateY(-20px);
-
-    }
-
-
-    100% {
-
-        transform:translateY(0);
-
-    }
-
-}
-
-/* =========================
-   FIX FLOATING HEART OVERFLOW
-========================= */
-
-html,
-body {
-
-    overflow-x:hidden;
-
-}
-
-
-
-.floating-heart {
-
-    position:fixed;
-
-    right:20px;
-
-    bottom:20px;
-
-    z-index:999;
-
-
-    animation:
-
-    floatHeart 3s ease-in-out infinite;
-
-
-    pointer-events:none;
-
-}
-
-
-
-@keyframes floatHeart {
-
-
-    0% {
-
-        transform:translateY(0);
-
-    }
-
-
-    50% {
-
-        transform:translateY(-20px);
-
-    }
-
-
-    100% {
-
-        transform:translateY(0);
-
-    }
-
-
-}
