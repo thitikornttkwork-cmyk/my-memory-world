@@ -396,3 +396,54 @@ window.addEventListener("load", () => {
 
 
 });
+
+// =======================
+// Scroll Reveal
+// =======================
+
+
+const revealElements = document.querySelectorAll(
+    ".story-item, .memory-card, .dream-card"
+);
+
+
+
+const revealOnScroll = () => {
+
+
+    revealElements.forEach(element => {
+
+
+        const windowHeight =
+        window.innerHeight;
+
+
+        const elementTop =
+        element.getBoundingClientRect().top;
+
+
+
+        if(elementTop < windowHeight - 100){
+
+
+            element.classList.add("show");
+
+
+        }
+
+
+    });
+
+
+};
+
+
+
+window.addEventListener(
+    "scroll",
+    revealOnScroll
+);
+
+
+
+revealOnScroll();
