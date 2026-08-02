@@ -244,3 +244,50 @@ if(counter){
     counter.innerText = days;
 
 }
+
+// =======================
+// LOAD OUR SONG
+// =======================
+
+fetch(API_URL + "?sheet=Relationship")
+
+.then(res => res.json())
+
+.then(data => {
+
+
+    let relationship = {};
+
+
+    data.forEach(item => {
+
+        relationship[item.Field] = item.Value;
+
+    });
+
+
+
+    const song =
+    relationship["Our Song"];
+
+
+
+    const player =
+    document.getElementById("song-link");
+
+
+
+    if(song && player){
+
+        player.src = song;
+
+    }
+
+
+})
+
+.catch(err => {
+
+    console.error("Song Error:", err);
+
+});
