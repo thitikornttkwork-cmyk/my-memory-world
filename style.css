@@ -2867,3 +2867,199 @@ footer p {
 
 
 }
+
+/* =========================
+   PROMISE SECTION
+========================= */
+
+
+.promise {
+
+    text-align:center;
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(255,230,240,.7),
+        transparent 60%
+    );
+
+}
+
+
+
+
+
+.promise-card {
+
+
+    max-width:600px;
+
+
+    margin:50px auto;
+
+
+    padding:50px 40px;
+
+
+    background:
+
+    linear-gradient(
+
+        145deg,
+
+        white,
+
+        #fff8ef
+
+    );
+
+
+
+    border-radius:35px;
+
+
+
+    box-shadow:
+
+    0 25px 60px rgba(0,0,0,.12);
+
+
+
+    transition:.5s;
+
+
+}
+
+
+
+
+.promise-card:hover {
+
+
+    transform:
+
+    translateY(-15px);
+
+
+
+    box-shadow:
+
+    0 35px 70px rgba(212,175,55,.3);
+
+
+}
+
+
+
+
+
+.promise-ring {
+
+
+    font-size:70px;
+
+
+    animation:
+
+    ringFloat 3s infinite ease-in-out;
+
+
+}
+
+
+
+
+
+@keyframes ringFloat {
+
+
+    0% {
+
+        transform:translateY(0);
+
+    }
+
+
+    50% {
+
+        transform:translateY(-15px);
+
+    }
+
+
+    100% {
+
+        transform:translateY(0);
+
+    }
+
+
+}
+
+
+
+
+
+.promise-card h3 {
+
+
+    font-size:32px;
+
+
+    color:#8b6b23;
+
+
+    margin:20px 0;
+
+
+}
+
+
+
+
+
+.promise-card p {
+
+
+    font-size:18px;
+
+
+    line-height:1.8;
+
+
+    color:#555;
+
+
+}
+
+
+
+
+
+.promise-card span {
+
+
+    display:inline-block;
+
+
+    margin-top:25px;
+
+
+    padding:10px 25px;
+
+
+    border-radius:30px;
+
+
+    color:#8b6b23;
+
+
+    background:#fff0c8;
+
+
+    font-weight:bold;
+
+
+}
