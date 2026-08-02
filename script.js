@@ -11,7 +11,9 @@ fetch(API_URL + "?sheet=Relationship")
 
 .then(data => {
 
+
     let relationship = {};
+
 
     data.forEach(item => {
 
@@ -20,12 +22,15 @@ fetch(API_URL + "?sheet=Relationship")
     });
 
 
+
     document.getElementById("couple-name").innerText =
     relationship["Couple Name"] || "";
 
 
+
     document.getElementById("together-since").innerText =
     "Together Since " + (relationship["Together Since"] || "");
+
 
 })
 
@@ -37,11 +42,14 @@ fetch(API_URL + "?sheet=Relationship")
 
 
 
+
+
 // =======================
 // Memories
 // =======================
 
 const MEMORY_API = API_URL + "?sheet=Memories";
+
 
 
 fetch(MEMORY_API)
@@ -55,57 +63,93 @@ fetch(MEMORY_API)
     document.getElementById("memory-container");
 
 
+
     memories.forEach(memory => {
+
 
 
         container.innerHTML += `
 
+
         <div class="card memory-card">
 
 
-${memory["Photo URL"] ? 
+            ${
+            memory.Favorite === "TRUE"
+            ?
+            `
+            <div class="favorite-badge">
+                ⭐ Favorite
+            </div>
+            `
+            :
+            ""
+            }
 
-`
-<img 
-src="${memory["Photo URL"]}"
-class="memory-image">
-`
-
-:
-
-""}
 
 
+            ${
+            memory["Photo URL"]
+            ?
+            `
+            <img
+            src="${memory["Photo URL"]}"
+            class="memory-image">
+            `
+            :
+            ""
+            }
 
-<h3>
 
-${memory.Favorite === "TRUE" ? "⭐ " : "❤️ "}
 
-${memory.Title}
+            <h3>
 
-</h3>
+            ${
+            memory.Favorite === "TRUE"
+            ?
+            "⭐ "
+            :
+            "❤️ "
+            }
+
+            ${memory.Title || ""}
+
+            </h3>
+
+
 
             <p>
             ${memory.Description || ""}
             </p>
 
+
+
             <p>
             👥 ${memory.People || ""}
             </p>
+
+
 
             <p>
             📍 ${memory.Location || ""}
             </p>
 
+
+
             <p>
-😊 ${memory.Mood || ""}
-</p>
+            😊 ${memory.Mood || ""}
+            </p>
+
+
 
             <p>
             ⭐ ${memory.Rating || ""}
             </p>
 
+
+
         </div>
+
 
         `;
 
@@ -113,7 +157,9 @@ ${memory.Title}
     });
 
 
+
 })
+
 
 .catch(error => {
 
@@ -123,68 +169,119 @@ ${memory.Title}
 
 
 
+
+
+
+
+
 // =======================
 // Bucket List
 // =======================
 
+
 const BUCKET_API = API_URL + "?sheet=Bucket%20List";
+
 
 
 fetch(BUCKET_API)
 
+
 .then(response => response.json())
 
+
 .then(dreams => {
+
 
 
     const container =
     document.getElementById("bucket-container");
 
 
+
     dreams.forEach(dream => {
+
 
 
         container.innerHTML += `
 
-        <div class="card">
+
+
+        <div class="card dream-card">
+
+
 
             <h3>
-            ✨ ${dream.Dream}
+
+            ✨ ${dream.Dream || ""}
+
             </h3>
 
 
+
+
             <p>
+
             ${dream.Description || ""}
+
             </p>
+
+
+
 
 
             <p>
-            🔥 Priority:
-            ${dream.Priority || ""}
+
+            <span class="priority-badge">
+
+            🔥 ${dream.Priority || ""}
+
+            </span>
+
             </p>
+
+
+
 
 
             <p>
-            📌 Status:
-            ${dream.Status || ""}
+
+            <span class="status-badge">
+
+            📌 ${dream.Status || ""}
+
+            </span>
+
             </p>
+
 
 
         </div>
 
+
+
         `;
+
 
 
     });
 
 
+
 })
+
 
 .catch(error => {
 
     console.error("Bucket Error:", error);
 
 });
+
+
+
+
+
+
+
 
 // =======================
 // Anniversary Counter
@@ -200,40 +297,72 @@ const today = new Date();
 const difference = today - startDate;
 
 
+
 const days = Math.floor(
-    difference / (1000 * 60 * 60 * 24)
+
+    difference /
+    (1000 * 60 * 60 * 24)
+
 );
 
 
+
 document.getElementById("days-count").innerText = days;
+
+
+
+
+
+
+
 
 // =======================
 // Our Song
 // =======================
 
+
 fetch(API_URL + "?sheet=Relationship")
+
 
 .then(response => response.json())
 
+
 .then(data => {
+
 
     let relationship = {};
 
+
+
     data.forEach(item => {
+
 
         relationship[item.Field] = item.Value;
 
+
     });
+
 
 
     const song = relationship["Our Song"];
 
 
+
     if(song){
+
 
         document.getElementById("song-link").src = song;
 
+
     }
 
-});
 
+
+})
+
+
+.catch(error => {
+
+    console.error("Song Error:", error);
+
+});

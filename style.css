@@ -106,6 +106,7 @@ nav a {
 
 
 
+
 .counter {
 
     margin:20px;
@@ -117,9 +118,12 @@ nav a {
     background:white;
 
     box-shadow:
+
     0 10px 30px rgba(0,0,0,.1);
 
 }
+
+
 
 
 
@@ -146,6 +150,8 @@ section h2 {
     color:#8b6b23;
 
 }
+
+
 
 
 
@@ -181,6 +187,7 @@ section h2 {
     width:3px;
 
     background:
+
     linear-gradient(
         to bottom,
         transparent,
@@ -228,6 +235,7 @@ section h2 {
 
     box-shadow:
 
+
     0 15px 35px rgba(0,0,0,.12);
 
 
@@ -258,6 +266,8 @@ section h2 {
     left:55%;
 
 }
+
+
 
 
 
@@ -329,6 +339,7 @@ section h2 {
 
 
 
+
 .story-item:nth-child(even)::before{
 
 
@@ -336,6 +347,8 @@ section h2 {
 
 
 }
+
+
 
 
 
@@ -367,6 +380,8 @@ section h2 {
 
 
 
+
+
 /* =========================
    STORY MEDIA
    IMAGE + VIDEO
@@ -380,10 +395,13 @@ section h2 {
     width:100%;
 
 
-    height:250px;
+    height:auto;
 
 
-    object-fit:cover;
+    max-height:500px;
+
+
+    object-fit:contain;
 
 
     border-radius:20px;
@@ -404,10 +422,11 @@ section h2 {
 .story-item video {
 
 
-    background:black;
+    background:#000;
 
 
 }
+
 
 
 
@@ -440,6 +459,8 @@ section h2 {
 
 
 
+
+
 /* Title */
 
 
@@ -458,6 +479,8 @@ section h2 {
 
 
 
+
+
 /* Text */
 
 
@@ -468,6 +491,8 @@ section h2 {
 
 
 }
+
+
 
 
 
@@ -510,6 +535,8 @@ section h2 {
 
 
 
+
+
 .memory-image {
 
 
@@ -520,6 +547,9 @@ section h2 {
 
 
 }
+
+
+
 
 
 
@@ -548,6 +578,7 @@ section h2 {
 
 
 
+
     .story-item,
 
 
@@ -557,6 +588,7 @@ section h2 {
     .story-item:nth-child(odd){
 
 
+
         width:80%;
 
 
@@ -564,6 +596,7 @@ section h2 {
 
 
     }
+
 
 
 
@@ -593,12 +626,390 @@ section h2 {
     .hero h1{
 
 
+
         font-size:35px;
 
 
     }
 
 
+
+
+
+}
+
+.story-item img,
+.story-item video {
+
+    transition:
+    transform .5s ease,
+    box-shadow .5s ease;
+
+}
+
+
+.story-item img:hover,
+.story-item video:hover {
+
+    transform:
+    scale(1.03);
+
+
+    box-shadow:
+
+    0 20px 40px rgba(212,175,55,.35);
+
+}
+
+/* =========================
+   STORY ENTER ANIMATION
+========================= */
+
+
+.story-item {
+
+    opacity:0;
+
+    animation:
+    storyFade 1s ease forwards;
+
+}
+
+
+
+.story-item:nth-child(1){
+
+    animation-delay:.2s;
+
+}
+
+
+.story-item:nth-child(2){
+
+    animation-delay:.5s;
+
+}
+
+
+.story-item:nth-child(3){
+
+    animation-delay:.8s;
+
+}
+
+
+
+@keyframes storyFade {
+
+
+    from {
+
+        opacity:0;
+
+        transform:
+        translateY(50px);
+
+    }
+
+
+
+    to {
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+
+}
+
+/* =========================
+   MEMORY PREMIUM HOVER
+========================= */
+
+
+.memory-card {
+
+    transition:
+
+    transform .4s ease,
+    box-shadow .4s ease;
+
+}
+
+
+
+.memory-card:hover {
+
+
+    transform:
+
+    translateY(-10px);
+
+
+    box-shadow:
+
+
+    0 25px 50px rgba(212,175,55,.25);
+
+
+}
+
+
+
+.memory-card img {
+
+
+    transition:
+
+    transform .5s ease;
+
+
+}
+
+
+
+.memory-card:hover img {
+
+
+    transform:
+
+    scale(1.03);
+
+
+}
+
+/* =========================
+   PREMIUM MEMORY CARD
+========================= */
+
+
+.memory-card {
+
+    overflow:hidden;
+
+    padding:0;
+
+}
+
+
+
+.memory-card .memory-image {
+
+
+    width:100%;
+
+    height:350px;
+
+    object-fit:cover;
+
+
+    border-radius:
+
+    25px 25px 0 0;
+
+
+}
+
+
+
+.memory-card h3 {
+
+
+    padding:20px 25px 10px;
+
+
+    color:#8b6b23;
+
+
+    font-size:26px;
+
+
+}
+
+
+
+.memory-card p {
+
+
+    padding:
+
+    0 25px;
+
+
+}
+
+
+
+.memory-card p:last-child {
+
+
+    padding-bottom:25px;
+
+
+}
+
+/* =========================
+   FAVORITE BADGE
+========================= */
+
+
+.memory-card {
+
+    position:relative;
+
+}
+
+
+
+.favorite-badge {
+
+
+    position:absolute;
+
+
+    top:20px;
+
+
+    left:20px;
+
+
+    z-index:2;
+
+
+    padding:
+
+    8px 15px;
+
+
+    border-radius:30px;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        #fff,
+        #f5d88a
+    );
+
+
+    color:#8b6b23;
+
+
+    font-weight:bold;
+
+
+    box-shadow:
+
+    0 8px 20px rgba(0,0,0,.15);
+
+
+}
+
+/* =========================
+   DREAM CARD PREMIUM
+========================= */
+
+
+.dream-container {
+
+
+    max-width:900px;
+
+    margin:auto;
+
+}
+
+
+
+.dream-container .card {
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+    transition:
+
+    transform .4s ease,
+    box-shadow .4s ease;
+
+
+}
+
+
+
+
+
+.dream-container .card:hover {
+
+
+    transform:
+
+    translateY(-10px);
+
+
+    box-shadow:
+
+    0 25px 50px rgba(212,175,55,.25);
+
+
+}
+
+
+
+
+.dream-container h3 {
+
+
+    color:#8b6b23;
+
+
+    font-size:26px;
+
+
+}
+
+
+
+
+
+.dream-container p {
+
+
+    line-height:1.8;
+
+
+}
+
+
+
+
+
+.dream-container .card::before {
+
+
+    content:"✨";
+
+
+    position:absolute;
+
+
+    right:20px;
+
+
+    top:15px;
+
+
+    font-size:35px;
+
+
+    opacity:.4;
 
 
 }
