@@ -3241,3 +3241,64 @@ body {
     }
 
 }
+
+/* =========================
+   FIX FLOATING HEART OVERFLOW
+========================= */
+
+html,
+body {
+
+    overflow-x:hidden;
+
+}
+
+
+
+.floating-heart {
+
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
+
+    z-index:999;
+
+
+    animation:
+
+    floatHeart 3s ease-in-out infinite;
+
+
+    pointer-events:none;
+
+}
+
+
+
+@keyframes floatHeart {
+
+
+    0% {
+
+        transform:translateY(0);
+
+    }
+
+
+    50% {
+
+        transform:translateY(-20px);
+
+    }
+
+
+    100% {
+
+        transform:translateY(0);
+
+    }
+
+
+}
